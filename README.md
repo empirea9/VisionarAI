@@ -27,11 +27,21 @@ This function analyzes the user's prompt to determine how much context the LLM n
 ### 5. executeAction (Action Executor)
 Injected directly into the target webpage, this function translates the LLM's JSON commands into physical browser interactions. It supports simulating complex synthetic events (like `mouseover` and `mouseenter` for the `hover` action), typing text into React/Angular managed input fields, and programmatically finding the correct internal scrollable container in modern Single Page Applications.
 
-## Installation Instructions
+## Installation & Setup
 
-1. Open your Chromium-based browser (Chrome, Edge, Brave) or Firefox/Zen.
-2. Go to your extensions page (e.g., `chrome://extensions`).
-3. Enable **Developer Mode**.
-4. Click **Load unpacked** and select the `extension/` folder from this repository.
-5. Click on the extension icon in your toolbar to open the side panel.
-6. Click the settings icon in the top right, and paste your Gemini API Key into the settings page to enable local execution.
+1. **Install Dependencies & Build Extension**:
+   ```bash
+   cd extension
+   npm install
+   npm run build
+   ```
+
+2. **Load in Browser**:
+   * Open your Chromium-based browser (Chrome, Edge, Brave).
+   * Go to `chrome://extensions`.
+   * Enable **Developer Mode** (top right toggle).
+   * Click **Load unpacked** and select the `extension/` folder from this repository.
+
+3. **Configure API Key**:
+   * Click on the extension icon in your toolbar to open the side panel.
+   * Click the settings icon in the top right, and paste your **Gemini API Key** into the settings page.
