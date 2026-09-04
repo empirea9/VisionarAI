@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Offscreen — Private Browser Agent</title>
+</head>
+<body>
+  <!--
+    ML Inference Runtime — runs in extension's offscreen context.
+    Has DOM/Canvas access for ONNX/WebGPU inference.
+    Handles: Object Detection (YOLOS-tiny), OCR (Tesseract.js), Image Redaction
+  -->
+  <canvas id="workCanvas" style="display:none"></canvas>
+
+  <!-- Bundled ML runtime (built by: npm run build) -->
+  <script src="offscreen.bundle.js"></script>
+
+  <!-- Fallback: load unbundled version if bundle doesn't exist -->
+  <script>
+    if (typeof chrome !== 'undefined' && !window.__offscreenLoaded) {
+      var s = document.createElement('script');
+      s.src = 'offscreen.js';
+      document.body.appendChild(s);
+    }
+  </script>
+</body>
+</html>

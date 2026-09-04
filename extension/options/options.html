@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VisionarAI — Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: #111113;
+      color: #f2f2f2;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px 60px;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    body.light-mode {
+      background: #ffffff;
+      color: #111113;
+    }
+    body.light-mode .page-header h1, body.light-mode .row-label { color: #111113; }
+    body.light-mode .card {
+      background: #f8f8fa;
+      border: 1px solid #e5e5ea;
+    }
+    body.light-mode .card-row { border-bottom: 1px solid #e5e5ea; }
+    body.light-mode input[type="text"], body.light-mode input[type="password"] {
+      border: 1px solid #d1d1d6;
+    }
+    body.light-mode .theme-toggle {
+      background: #e5e5ea;
+      border: 1px solid #d1d1d6;
+    }
+    body.light-mode .theme-option { color: #8e8e93; }
+    body.light-mode .theme-option.active { background: #ffffff; color: #111113; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    body.light-mode .hist-item { border-bottom: 1px solid #e5e5ea; }
+    body.light-mode .hist-text { color: #111113; }
+    body.light-mode .save-btn { background: #007aff; color: white; }
+    body.light-mode .danger-btn { background: #fff0f0; }
+
+    .page { width: 100%; max-width: 520px; }
+
+    /* ── Page Header ── */
+    .page-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .page-header svg { color: #a0a0a8; }
+    .page-header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f2f2f2;
+    }
+
+    /* ── Sections ── */
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #505058;
+      margin-bottom: 8px;
+      padding-left: 2px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .card-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      gap: 16px;
+    }
+    .card-row:last-child { border-bottom: none; }
+
+    .row-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #f2f2f2;
+    }
+    .row-sub {
+      font-size: 12px;
+      color: #505058;
+      margin-top: 2px;
+    }
+
+    /* Input */
+    input[type="text"], input[type="password"] {
+      flex: 1;
+      background: #000000;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      padding: 9px 13px;
+      color: #f2f2f2;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      min-width: 0;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+      border-color: rgba(255,255,255,0.4);
+    }
+    input[type="text"]::placeholder, input[type="password"]::placeholder { color: #505058; }
+
+    /* Segmented toggle */
+    .theme-toggle {
+      display: flex;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+    .theme-option {
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      color: #505058;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      transition: background 0.2s, color 0.2s;
+    }
+    .theme-option.active {
+      background: #f2f2f2;
+      color: #111113;
+    }
+
+    /* History */
+    #historyList {
+      list-style: none;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+    #historyList::-webkit-scrollbar { width: 3px; }
+    #historyList::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+    }
+
+    .hist-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 11px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.15s;
+    }
+    .hist-item:last-child { border-bottom: none; }
+    .hist-item:hover { background: rgba(255,255,255,0.03); }
+
+    .hist-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: #505058;
+      min-width: 28px;
+      font-variant-numeric: tabular-nums;
+    }
+    .hist-text {
+      font-size: 13px;
+      color: #c8c8d0;
+      line-height: 1.4;
+    }
+    .hist-empty {
+      padding: 20px 18px;
+      font-size: 13px;
+      color: #505058;
+      text-align: center;
+    }
+
+    /* Buttons */
+    .save-btn {
+      width: 100%;
+      padding: 12px;
+      background: #f2f2f2;
+      color: #111113;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .save-btn:hover { opacity: 0.88; }
+    .save-btn:active { transform: scale(0.97); }
+
+    .danger-btn {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255,59,48,0.10);
+      color: #ff3b30;
+      border: 1px solid rgba(255,59,48,0.25);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .danger-btn:hover { background: rgba(255,59,48,0.20); }
+
+    .saved-msg {
+      font-size: 13px;
+      color: #4cd964;
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="page-header">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+    <h1>Settings</h1>
+  </div>
+
+  <!-- Backend -->
+  <p class="section-title">Backend</p>
+  <div class="card">
+    <div class="card-row">
+      <div>
+        <div class="row-label">Gemini API Key</div>
+        <div class="row-sub">Required for local browser execution</div>
+      </div>
+      <div style="display: flex; gap: 8px; flex: 1; align-items: center;">
+        <input type="password" id="geminiApiKey" placeholder="AIzaSy...">
+        <button id="toggleApiKeyBtn" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #a0a0a8; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 8px; transition: background 0.2s;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Appearance -->
+  <p class="section-title">Appearance</p>
+  <div class="card">
+    <div class="card-row">
+      <div class="row-label">Theme</div>
+      <div class="theme-toggle">
+        <button class="theme-option active" data-theme="dark" id="themeDark">Dark</button>
+        <button class="theme-option" data-theme="light" id="themeLight">Light</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Save -->
+  <div class="btn-row">
+    <button class="save-btn" id="saveBtn">Save Settings</button>
+  </div>
+  <div class="saved-msg" id="savedMsg">✓ Settings saved successfully</div>
+
+  <!-- History -->
+  <p class="section-title" style="margin-top: 28px;">Prompt History</p>
+  <div class="card">
+    <ul id="historyList">
+      <li class="hist-empty">Loading…</li>
+    </ul>
+  </div>
+  <button class="danger-btn" id="clearHistoryBtn">Clear All History</button>
+
+</div>
+<script src="options.js"></script>
+</body>
+</html>

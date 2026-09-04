@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "Private Browser Agent",
+  "description": "A privacy-preserving browser agent. Your data never leaves your device unredacted.",
+  "version": "0.1.0",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "browser-agent@sih.prototype",
+      "strict_min_version": "109.0"
+    }
+  },
+
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "scripts": [
+      "offscreen/offscreen.bundle.js",
+      "background/service-worker.js"
+    ],
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Private Browser Agent"
+  },
+
+  "sidebar_action": {
+    "default_panel": "popup/popup.html"
+  },
+
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "content/dom-collector.js",
+        "content/page-parser.js",
+        "content/action-executor.js",
+        "content/page-state.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

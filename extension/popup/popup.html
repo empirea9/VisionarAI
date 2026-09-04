@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VisionarAI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<div class="viewport-wrapper">
+  <!-- Decorative background for glass effect -->
+  <div class="bg-shape bg-shape-1"></div>
+  <div class="bg-shape bg-shape-2"></div>
+
+  <div class="glass-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div>
+          <h1 class="title">VisionarAI</h1>
+        </div>
+      </div>
+      <div class="header-right">
+        <!-- LLM Model Indicator -->
+        <div class="status-pill" id="modelStatus" title="Connected LLM">
+          <span class="dot green" id="modelDot"></span> <span id="modelLabel">Connecting...</span>
+        </div>
+        <button id="clearBtn" class="icon-btn" title="Clear chat">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>
+        </button>
+        <button id="settingsBtn" class="icon-btn" title="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- API Key Warning Banner -->
+    <div id="apiKeyWarning" style="display: none; background: rgba(255,59,48,0.15); border-bottom: 1px solid rgba(255,59,48,0.3); padding: 10px 16px; text-align: center; font-size: 13px;">
+      <span style="color: #ff3b30; font-weight: 600;">API Key is missing.</span> 
+      <a href="#" id="apiKeyWarningLink" style="color: #f2f2f2; text-decoration: underline; margin-left: 5px;">Click here to open settings</a>
+    </div>
+
+    <!-- Main Content Area (Flexible scrolling list of turns) -->
+    <div class="main-content" id="chatContainer">
+      <!-- Greeting Screen -->
+      <div id="greetingScreen" class="greeting-screen">
+        <h2 id="greetingMsg">Hello!</h2>
+        <p>How can I help you today?</p>
+      </div>
+      <!-- Dynamic chat bubbles will be appended here -->
+    </div>
+
+    <!-- Input Area (Locked to Bottom) -->
+    <div class="input-area">
+      <div class="input-row">
+        <textarea
+          id="taskInput"
+          placeholder="Ask VisionarAI..."
+          rows="2"
+        ></textarea>
+        <button id="runBtn" class="run-btn" disabled>
+          <svg class="run-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

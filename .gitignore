@@ -1,0 +1,24 @@
+# Node dependencies
+node_modules/
+**/node_modules/
+
+# Python cache & virtual environments
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Environment files & secrets
+.env
+.env.local
+*.env
+
+# Build & bundle output (adjust if needed)
+dist/
+build/
+
+# OS / Editor junk
+.DS_Store
+.vscode/
+.idea/
