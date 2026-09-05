@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VisionarAI — Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site">
+    <header class="topbar">
+      <div class="brand">
+        <p class="kicker">PRIVATE BROWSER AUTOMATION</p>
+        <h1>Documentation</h1>
+      </div>
+      <nav class="nav">
+        <a href="index.html">HOME</a>
+        <a class="active" href="documentation.html">DOCUMENTATION</a>
+        <a href="proof.html">PROOF</a>
+        <a href="team.html">TEAM</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="panel">
+        <p class="label">SYSTEM / DOCUMENTATION</p>
+        <h2>CORE FLOW</h2>
+        <div class="docs-grid">
+          <article class="card">
+            <span class="card-tag">[D01]</span>
+            <h3>Capture</h3>
+            <p>Collect active page state and visual context from the browser runtime.</p>
+          </article>
+          <article class="card">
+            <span class="card-tag">[D02]</span>
+            <h3>Sanitize</h3>
+            <p>Redact PII strings and image regions before model access.</p>
+          </article>
+          <article class="card">
+            <span class="card-tag">[D03]</span>
+            <h3>Act</h3>
+            <p>Execute validated actions and iterate until completion criteria are met.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p class="label">PIPELINE / READOUT</p>
+        <div class="code">&gt; collect_dom_state()
+&gt; capture_visual_context()
+&gt; detect_text_pii()
+&gt; redact_page_state()
+&gt; run_agent_loop()
+&gt; execute_action_batch()</div>
+      </section>
+    </main>
+
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span>&gt; DOCS INDEXED... &gt; ACTION TYPES: CLICK TYPE SCROLL HOVER... &gt; RETRY GUARD ENABLED...</span>
+        <span>&gt; DOCS INDEXED... &gt; ACTION TYPES: CLICK TYPE SCROLL HOVER... &gt; RETRY GUARD ENABLED...</span>
+      </div>
+    </div>
+
+    <footer class="footer">VISIONARAI DOCS / OPERATIONAL REFERENCE</footer>
+  </div>
+</body>
+</html>

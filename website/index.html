@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VisionarAI — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site">
+    <header class="topbar">
+      <div class="brand">
+        <p class="kicker">PRIVATE BROWSER AUTOMATION</p>
+        <h1>VisionarAI</h1>
+      </div>
+      <nav class="nav">
+        <a class="active" href="index.html">HOME</a>
+        <a href="documentation.html">DOCUMENTATION</a>
+        <a href="proof.html">PROOF</a>
+        <a href="team.html">TEAM</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="panel hero">
+        <p class="label">SYSTEM / HOME</p>
+        <h2>REDACT.<br><span class="accent-mint">ANALYZE.</span><br>EXECUTE.</h2>
+        <p>VisionarAI runs in your browser, scrubs sensitive content, and executes web tasks with strict control over privacy and action flow.</p>
+        <div class="actions">
+          <a class="btn accent-mint" href="documentation.html">READ DOCS</a>
+          <a class="btn accent-coral" href="proof.html">VIEW PROOF</a>
+        </div>
+      </section>
+
+      <section class="features">
+        <article class="card">
+          <span class="card-tag">[F01]</span>
+          <h3>DOM + VISUAL CONTEXT</h3>
+          <p>Hybrid understanding of structured content and screenshots for dynamic SPA behavior.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">[F02]</span>
+          <h3>LOCAL REDACTION</h3>
+          <p>PII detection and replacement happen before external model calls.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">[F03]</span>
+          <h3>ACTION LOOP CONTROL</h3>
+          <p>Execution safeguards reduce repeat failures and unstable loops.</p>
+        </article>
+      </section>
+
+      <section class="redaction" data-redaction-demo>
+        <div class="window-bar">
+          <span class="dot accent-coral"></span>
+          <span class="dot accent-mint"></span>
+          <span class="dot accent-lavender"></span>
+          <span class="kicker">session://scrubbed_capture.html</span>
+        </div>
+        <div class="window-body">
+          <div class="row"><span>NAME</span><span class="pii-target">Alex Rivera</span></div>
+          <div class="row"><span>EMAIL</span><span class="pii-target">alex.rivera@example.com</span></div>
+          <div class="row"><span>PHONE</span><span class="pii-target">+1 (555) 123-9876</span></div>
+          <div class="scan"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span>&gt; WEBGPU ACTIVE... &gt; SCRUBBING DOM... &gt; REDACTION PASS COMPLETE... &gt; ACTION LOOP STABLE...</span>
+        <span>&gt; WEBGPU ACTIVE... &gt; SCRUBBING DOM... &gt; REDACTION PASS COMPLETE... &gt; ACTION LOOP STABLE...</span>
+      </div>
+    </div>
+
+    <footer class="footer">VISIONARAI / LOCAL-FIRST AGENT / 2026</footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
