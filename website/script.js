@@ -21,4 +21,25 @@ function renderRedactionBoxes() {
 }
 
 window.addEventListener('resize', renderRedactionBoxes);
-window.addEventListener('DOMContentLoaded', renderRedactionBoxes);
+window.addEventListener('DOMContentLoaded', () => {
+  renderRedactionBoxes();
+  setupCapabilityFlow();
+});
+
+function setupCapabilityFlow() {
+  const steps = Array.from(document.querySelectorAll('.flow-step'));
+  const detail = document.getElementById('flowDetail');
+  if (!steps.length || !detail) return;
+
+  const setActive = (step) => {
+    steps.forEach((item) => item.classList.remove('active'));
+    step.classList.add('active');
+    detail.textContent = step.dataset.detail || '';
+  };
+
+  steps.forEach((step) => {
+    step.addEventListener('mouseenter', () => setActive(step));
+    step.addEventListener('focus', () => setActive(step));
+    step.addEventListener('click', () => setActive(step));
+  });
+}

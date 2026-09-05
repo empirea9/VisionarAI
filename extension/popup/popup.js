@@ -202,7 +202,7 @@ function appendChatTurn(turn, idx) {
       const li = document.createElement('li');
       if (step.startsWith('ERROR_MSG:')) {
         li.textContent = step.substring(10);
-        li.style.color = '#ff453a';
+        li.style.color = '#c4b5fd';
       } else {
         li.textContent = step;
       }
@@ -329,7 +329,7 @@ function handleResponse(response) {
     // Append privacy note as a real DOM node (not through the markdown parser)
     if (response.privacy && response.privacy.redactedCount > 0) {
       const priv = document.createElement('p');
-      priv.style.cssText = 'font-size:11px; color:var(--text-muted); margin-top:8px;';
+      priv.style.cssText = 'font-size:11px; color:var(--text-2); margin-top:8px;';
       priv.textContent = '(Privacy: ' + response.privacy.redactedCount + ' items redacted)';
       ansText.appendChild(priv);
     }
@@ -355,7 +355,7 @@ function addLiveStep(text) {
     var li = document.createElement('li');
     if (text.startsWith('ERROR_MSG:')) {
       li.textContent = text.substring(10);
-      li.style.color = '#ff453a';
+      li.style.color = '#c4b5fd';
     } else {
       li.textContent = text;
     }

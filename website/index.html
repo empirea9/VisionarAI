@@ -25,6 +25,21 @@
     </header>
 
     <main>
+      <section class="capability-strip panel">
+        <article>
+          <h3>100% local</h3>
+          <p>Inference runs close to the browser context.</p>
+        </article>
+        <article>
+          <h3>Before AI</h3>
+          <p>PII is detected and redacted first.</p>
+        </article>
+        <article>
+          <h3>Lightweight</h3>
+          <p>DOM + visual understanding with tight loops.</p>
+        </article>
+      </section>
+
       <section class="panel hero">
         <p class="label">SYSTEM / HOME</p>
         <h2>REDACT.<br><span class="accent-mint">ANALYZE.</span><br>EXECUTE.</h2>
@@ -51,6 +66,42 @@
           <h3>ACTION LOOP CONTROL</h3>
           <p>Execution safeguards reduce repeat failures and unstable loops.</p>
         </article>
+      </section>
+
+      <section class="panel capability-flow" id="capabilityFlow">
+        <p class="label">PIPELINE / INTERACTIVE</p>
+        <div class="flow-steps">
+          <article class="flow-step active" tabindex="0" data-detail="The user opens a live interface and the runtime begins structured collection.">
+            <span class="step-index">01</span>
+            <h3>Web page</h3>
+            <p>The user opens a real page.</p>
+          </article>
+          <span class="flow-arrow">→</span>
+          <article class="flow-step" tabindex="0" data-detail="DOM and visible UI elements are mapped into actionable context for the agent.">
+            <span class="step-index">02</span>
+            <h3>Scan UI</h3>
+            <p>Map structure + visible elements.</p>
+          </article>
+          <span class="flow-arrow">→</span>
+          <article class="flow-step" tabindex="0" data-detail="Names, email, phone, and sensitive identifiers are detected before model calls.">
+            <span class="step-index">03</span>
+            <h3>Detect PII</h3>
+            <p>Find protected values.</p>
+          </article>
+          <span class="flow-arrow">→</span>
+          <article class="flow-step" tabindex="0" data-detail="Private values become placeholder tokens so the model receives sanitized input only.">
+            <span class="step-index">04</span>
+            <h3>Redact</h3>
+            <p>Apply safe placeholders.</p>
+          </article>
+          <span class="flow-arrow">→</span>
+          <article class="flow-step" tabindex="0" data-detail="The local agent chooses and executes browser actions from sanitized context.">
+            <span class="step-index">05</span>
+            <h3>Act locally</h3>
+            <p>Execute with control loops.</p>
+          </article>
+        </div>
+        <p class="flow-detail" id="flowDetail">The user opens a live interface and the runtime begins structured collection.</p>
       </section>
 
       <section class="redaction" data-redaction-demo>
