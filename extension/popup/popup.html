@@ -7,22 +7,15 @@
 </head>
 <body>
 <div class="viewport-wrapper">
-  <!-- Decorative background for glass effect -->
-  <div class="bg-shape bg-shape-1"></div>
-  <div class="bg-shape bg-shape-2"></div>
-
-  <div class="glass-container">
-    <!-- Header -->
+  <div class="grid-container">
     <header class="header">
-      <div class="header-left">
-        <div>
-          <h1 class="title">VisionarAI</h1>
-        </div>
+      <div>
+        <p class="kicker">PRIVATE BROWSER AGENT</p>
+        <h1 class="title">VisionarAI</h1>
       </div>
       <div class="header-right">
-        <!-- LLM Model Indicator -->
         <div class="status-pill" id="modelStatus" title="Connected LLM">
-          <span class="dot green" id="modelDot"></span> <span id="modelLabel">Connecting...</span>
+          <span class="dot green" id="modelDot"></span><span id="modelLabel">Connecting...</span>
         </div>
         <button id="clearBtn" class="icon-btn" title="Clear chat">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>
@@ -33,23 +26,47 @@
       </div>
     </header>
 
-    <!-- API Key Warning Banner -->
-    <div id="apiKeyWarning" style="display: none; background: rgba(255,59,48,0.15); border-bottom: 1px solid rgba(255,59,48,0.3); padding: 10px 16px; text-align: center; font-size: 13px;">
-      <span style="color: #ff3b30; font-weight: 600;">API Key is missing.</span> 
-      <a href="#" id="apiKeyWarningLink" style="color: #f2f2f2; text-decoration: underline; margin-left: 5px;">Click here to open settings</a>
+    <div id="apiKeyWarning" class="api-warning" style="display: none;">
+      <span>API KEY MISSING.</span>
+      <a href="#" id="apiKeyWarningLink">OPEN SETTINGS</a>
     </div>
 
-    <!-- Main Content Area (Flexible scrolling list of turns) -->
     <div class="main-content" id="chatContainer">
-      <!-- Greeting Screen -->
       <div id="greetingScreen" class="greeting-screen">
-        <h2 id="greetingMsg">Hello!</h2>
-        <p>How can I help you today?</p>
+        <h2 id="greetingMsg">REDACT. ANALYZE. EXECUTE.</h2>
+        <p class="greeting-copy">Crisp local automation for modern web apps.</p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-tag">[F01]</span>
+            <h3>DOM + VISION</h3>
+            <p>Combines structural parsing with screenshot context for robust intent understanding.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-tag">[F02]</span>
+            <h3>LOCAL PII SCRUB</h3>
+            <p>Emails, phones, and IDs are redacted before any model interaction.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-tag">[F03]</span>
+            <h3>AGENTIC CONTROL</h3>
+            <p>Action planning and retries handle dynamic interfaces and hidden states.</p>
+          </article>
+        </div>
+        <div class="redaction-demo" aria-label="Redaction demo">
+          <div class="window-bar">
+            <span></span><span></span><span></span>
+            <strong>session://capture.html</strong>
+          </div>
+          <div class="window-body">
+            <div class="pii-row"><span>NAME:</span><span class="pii-target">Alex Rivera</span></div>
+            <div class="pii-row"><span>EMAIL:</span><span class="pii-target">alex.rivera@example.com</span></div>
+            <div class="pii-row"><span>PHONE:</span><span class="pii-target">+1 (555) 123-9876</span></div>
+            <div class="scan-line"></div>
+          </div>
+        </div>
       </div>
-      <!-- Dynamic chat bubbles will be appended here -->
     </div>
 
-    <!-- Input Area (Locked to Bottom) -->
     <div class="input-area">
       <div class="input-row">
         <textarea
@@ -63,6 +80,12 @@
       </div>
     </div>
 
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <span>> WEBGPU ACTIVE... > SCRUBBING DOM... > REDACTION PASS COMPLETE... > VISION CONTEXT CAPTURED... > ACTION LOOP STABLE... </span>
+        <span>> WEBGPU ACTIVE... > SCRUBBING DOM... > REDACTION PASS COMPLETE... > VISION CONTEXT CAPTURED... > ACTION LOOP STABLE... </span>
+      </div>
+    </div>
   </div>
 </div>
 
