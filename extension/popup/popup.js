@@ -6,40 +6,6 @@ var clearBtn      = document.getElementById('clearBtn');
 var settingsBtn   = document.getElementById('settingsBtn');
 var modelStatus   = document.getElementById('modelStatus');
 var modelLabel    = document.getElementById('modelLabel');
-var greetingTemplate = `
-  <div id="greetingScreen" class="greeting-screen">
-    <h2 id="greetingMsg">REDACT. ANALYZE. EXECUTE.</h2>
-    <p class="greeting-copy">Crisp local automation for modern web apps.</p>
-    <div class="feature-grid">
-      <article class="feature-card">
-        <span class="feature-tag">[F01]</span>
-        <h3>DOM + VISION</h3>
-        <p>Combines structural parsing with screenshot context for robust intent understanding.</p>
-      </article>
-      <article class="feature-card">
-        <span class="feature-tag">[F02]</span>
-        <h3>LOCAL PII SCRUB</h3>
-        <p>Emails, phones, and IDs are redacted before any model interaction.</p>
-      </article>
-      <article class="feature-card">
-        <span class="feature-tag">[F03]</span>
-        <h3>AGENTIC CONTROL</h3>
-        <p>Action planning and retries handle dynamic interfaces and hidden states.</p>
-      </article>
-    </div>
-    <div class="redaction-demo" aria-label="Redaction demo">
-      <div class="window-bar">
-        <span></span><span></span><span></span>
-        <strong>session://capture.html</strong>
-      </div>
-      <div class="window-body">
-        <div class="pii-row"><span>NAME:</span><span class="pii-target">Alex Rivera</span></div>
-        <div class="pii-row"><span>EMAIL:</span><span class="pii-target">alex.rivera@example.com</span></div>
-        <div class="pii-row"><span>PHONE:</span><span class="pii-target">+1 (555) 123-9876</span></div>
-        <div class="scan-line"></div>
-      </div>
-    </div>
-  </div>`;
 
 var isRunning = false;
 var taskStartTime = 0;
@@ -55,8 +21,6 @@ document.addEventListener('DOMContentLoaded', init);
 // ── Init ───────────────────────────────────────────────────
 function init() {
   loadTheme();
-  renderRedactionDemo();
-  window.addEventListener('resize', renderRedactionDemo);
   
   // Link warning banner to options page
   var apiKeyWarning = document.getElementById('apiKeyWarning');
@@ -165,8 +129,11 @@ function renderHistory() {
   chatContainer.innerHTML = '';
   
   if (chatHistory.length === 0) {
-    chatContainer.innerHTML = greetingTemplate;
-    renderRedactionDemo();
+    chatContainer.innerHTML = `
+      <div id="greetingScreen" class="greeting-screen">
+        <h2>Hello!</h2>
+        <p>How can I help you today?</p>
+      </div>`;
     return;
   }
 
@@ -362,7 +329,7 @@ function handleResponse(response) {
     // Append privacy note as a real DOM node (not through the markdown parser)
     if (response.privacy && response.privacy.redactedCount > 0) {
       const priv = document.createElement('p');
-      priv.style.cssText = 'font-size:11px; color:var(--muted); margin-top:8px;';
+      priv.style.cssText = 'font-size:11px; color:var(--text-muted); margin-top:8px;';
       priv.textContent = '(Privacy: ' + response.privacy.redactedCount + ' items redacted)';
       ansText.appendChild(priv);
     }
@@ -455,24 +422,4 @@ function checkServerStatus() {
   modelLabel.textContent = "Gemini 3.5 Flash Lite";
   modelStatus.querySelector('.dot').className = 'dot green';
   modelStatus.title = "Running locally in browser";
-}
-
-function renderRedactionDemo() {
-  const body = document.querySelector('.window-body');
-  if (!body) return;
-
-  body.querySelectorAll('.redaction-box').forEach(el => el.remove());
-  const bodyRect = body.getBoundingClientRect();
-
-  body.querySelectorAll('.pii-target').forEach((target) => {
-    const rect = target.getBoundingClientRect();
-    const box = document.createElement('div');
-    box.className = 'redaction-box';
-    box.textContent = '[REDACTED]';
-    box.style.left = (rect.left - bodyRect.left) + 'px';
-    box.style.top = (rect.top - bodyRect.top - 1) + 'px';
-    box.style.width = Math.max(88, rect.width) + 'px';
-    box.style.height = Math.max(16, rect.height + 2) + 'px';
-    body.appendChild(box);
-  });
 }
