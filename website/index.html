@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VisionarAI — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="site">
+    <header class="topbar">
+      <div class="brand">
+        <p class="kicker">PRIVATE BROWSER AUTOMATION</p>
+        <h1>VisionarAI</h1>
+      </div>
+      <nav class="nav">
+        <a class="active" href="index.html">HOME</a>
+        <a href="documentation.html">DOCUMENTATION</a>
+        <a href="proof.html">PROOF</a>
+        <a href="team.html">TEAM</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="capability-strip panel">
+        <article>
+          <h3>100% local</h3>
+          <p>Inference runs close to the browser context.</p>
+        </article>
+        <article>
+          <h3>Before AI</h3>
+          <p>PII is detected and redacted first.</p>
+        </article>
+        <article>
+          <h3>Lightweight</h3>
+          <p>DOM + visual understanding with tight loops.</p>
+        </article>
+      </section>
+
+      <section class="panel hero">
+        <p class="label">SYSTEM / HOME</p>
+        <h2>REDACT.<br><span class="accent-mint">ANALYZE.</span><br>EXECUTE.</h2>
+        <p>VisionarAI runs in your browser, scrubs sensitive content, and executes web tasks with strict control over
+          privacy and action flow.</p>
+        <div class="actions">
+          <a class="btn accent-mint" href="documentation.html">READ DOCS</a>
+          <a class="btn accent-coral" href="proof.html">VIEW PROOF</a>
+        </div>
+      </section>
+
+      <section class="features">
+        <article class="card">
+          <span class="card-tag">[F01]</span>
+          <h3>DOM + VISUAL CONTEXT</h3>
+          <p>Hybrid understanding of structured content and screenshots for dynamic SPA behavior.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">[F02]</span>
+          <h3>LOCAL REDACTION</h3>
+          <p>PII detection and replacement happen before external model calls.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">[F03]</span>
+          <h3>ACTION LOOP CONTROL</h3>
+          <p>Execution safeguards reduce repeat failures and unstable loops.</p>
+        </article>
+      </section>
+
+      <section class="panel capability-flow" id="capabilityFlow">
+        <p class="label">PIPELINE / INTERACTIVE</p>
+        <div class="flow-steps">
+          <article class="flow-step active" tabindex="0"
+            data-detail="The user opens a live interface and the runtime begins structured collection.">
+            <span class="step-index">01</span>
+            <h3>Web page</h3>
+            <p>The user opens a real page.</p>
+          </article>
+          <span class="flow-arrow">→</span>
+          <article class="flow-step" tabindex="0"
+            data-detail="DOM and visible UI elements are mapped into actionable context for the agent.">
+            <span class="step-index">02</span>
+            <h3>Scan UI</h3>
+            <p>Map structure + visible elements.</p>
+          </article>
+          <span class="flow-arrow">→</span>
+          <article class="flow-step" tabindex="0"
+            data-detail="Names, email, phone, and sensitive identifiers are detected before model calls.">
+            <span class="step-index">03</span>
+            <h3>Detect PII</h3>
+            <p>Find protected values.</p>
+          </article>
+          <span class="flow-arrow">→</span>
+          <article class="flow-step" tabindex="0"
+            data-detail="Private values become placeholder tokens so the model receives sanitized input only.">
+            <span class="step-index">04</span>
+            <h3>Redact</h3>
+            <p>Apply safe placeholders.</p>
+          </article>
+          <span class="flow-arrow">→</span>
+          <article class="flow-step" tabindex="0"
+            data-detail="The local agent chooses and executes browser actions from sanitized context.">
+            <span class="step-index">05</span>
+            <h3>Act locally</h3>
+            <p>Execute with control loops.</p>
+          </article>
+        </div>
+        <p class="flow-detail" id="flowDetail">The user opens a live interface and the runtime begins structured
+          collection.</p>
+      </section>
+
+      <section class="redaction" data-redaction-demo>
+        <div class="window-bar">
+          <span class="dot accent-coral"></span>
+          <span class="dot accent-mint"></span>
+          <span class="dot accent-lavender"></span>
+          <span class="kicker">session://scrubbed_capture.html</span>
+        </div>
+        <div class="window-body">
+          <div class="row"><span>NAME</span><span class="pii-target">Alex Rivera</span></div>
+          <div class="row"><span>EMAIL</span><span class="pii-target">alex.rivera@example.com</span></div>
+          <div class="row"><span>PHONE</span><span class="pii-target">+1 (555) 123-9876</span></div>
+          <div class="scan"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span>&gt; WEBGPU ACTIVE... &gt; SCRUBBING DOM... &gt; REDACTION PASS COMPLETE... &gt; ACTION LOOP
+          STABLE...</span>
+        <span>&gt; WEBGPU ACTIVE... &gt; SCRUBBING DOM... &gt; REDACTION PASS COMPLETE... &gt; ACTION LOOP
+          STABLE...</span>
+      </div>
+    </div>
+
+    <footer class="footer">VISIONARAI / LOCAL-FIRST AGENT / 2026</footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
