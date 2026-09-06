@@ -1,14 +1,18 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VisionarAI — Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <div class="site">
     <header class="topbar">
@@ -43,7 +47,8 @@
       <section class="panel hero">
         <p class="label">SYSTEM / HOME</p>
         <h2>REDACT.<br><span class="accent-mint">ANALYZE.</span><br>EXECUTE.</h2>
-        <p>VisionarAI runs in your browser, scrubs sensitive content, and executes web tasks with strict control over privacy and action flow.</p>
+        <p>VisionarAI runs in your browser, scrubs sensitive content, and executes web tasks with strict control over
+          privacy and action flow.</p>
         <div class="actions">
           <a class="btn accent-mint" href="documentation.html">READ DOCS</a>
           <a class="btn accent-coral" href="proof.html">VIEW PROOF</a>
@@ -71,37 +76,43 @@
       <section class="panel capability-flow" id="capabilityFlow">
         <p class="label">PIPELINE / INTERACTIVE</p>
         <div class="flow-steps">
-          <article class="flow-step active" tabindex="0" data-detail="The user opens a live interface and the runtime begins structured collection.">
+          <article class="flow-step active" tabindex="0"
+            data-detail="The user opens a live interface and the runtime begins structured collection.">
             <span class="step-index">01</span>
             <h3>Web page</h3>
             <p>The user opens a real page.</p>
           </article>
           <span class="flow-arrow">→</span>
-          <article class="flow-step" tabindex="0" data-detail="DOM and visible UI elements are mapped into actionable context for the agent.">
+          <article class="flow-step" tabindex="0"
+            data-detail="DOM and visible UI elements are mapped into actionable context for the agent.">
             <span class="step-index">02</span>
             <h3>Scan UI</h3>
             <p>Map structure + visible elements.</p>
           </article>
           <span class="flow-arrow">→</span>
-          <article class="flow-step" tabindex="0" data-detail="Names, email, phone, and sensitive identifiers are detected before model calls.">
+          <article class="flow-step" tabindex="0"
+            data-detail="Names, email, phone, and sensitive identifiers are detected before model calls.">
             <span class="step-index">03</span>
             <h3>Detect PII</h3>
             <p>Find protected values.</p>
           </article>
           <span class="flow-arrow">→</span>
-          <article class="flow-step" tabindex="0" data-detail="Private values become placeholder tokens so the model receives sanitized input only.">
+          <article class="flow-step" tabindex="0"
+            data-detail="Private values become placeholder tokens so the model receives sanitized input only.">
             <span class="step-index">04</span>
             <h3>Redact</h3>
             <p>Apply safe placeholders.</p>
           </article>
           <span class="flow-arrow">→</span>
-          <article class="flow-step" tabindex="0" data-detail="The local agent chooses and executes browser actions from sanitized context.">
+          <article class="flow-step" tabindex="0"
+            data-detail="The local agent chooses and executes browser actions from sanitized context.">
             <span class="step-index">05</span>
             <h3>Act locally</h3>
             <p>Execute with control loops.</p>
           </article>
         </div>
-        <p class="flow-detail" id="flowDetail">The user opens a live interface and the runtime begins structured collection.</p>
+        <p class="flow-detail" id="flowDetail">The user opens a live interface and the runtime begins structured
+          collection.</p>
       </section>
 
       <section class="redaction" data-redaction-demo>
@@ -122,8 +133,10 @@
 
     <div class="ticker-wrap">
       <div class="ticker">
-        <span>&gt; WEBGPU ACTIVE... &gt; SCRUBBING DOM... &gt; REDACTION PASS COMPLETE... &gt; ACTION LOOP STABLE...</span>
-        <span>&gt; WEBGPU ACTIVE... &gt; SCRUBBING DOM... &gt; REDACTION PASS COMPLETE... &gt; ACTION LOOP STABLE...</span>
+        <span>&gt; WEBGPU ACTIVE... &gt; SCRUBBING DOM... &gt; REDACTION PASS COMPLETE... &gt; ACTION LOOP
+          STABLE...</span>
+        <span>&gt; WEBGPU ACTIVE... &gt; SCRUBBING DOM... &gt; REDACTION PASS COMPLETE... &gt; ACTION LOOP
+          STABLE...</span>
       </div>
     </div>
 
@@ -131,4 +144,5 @@
   </div>
   <script src="script.js"></script>
 </body>
+
 </html>
