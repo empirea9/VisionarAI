@@ -1,5 +1,5 @@
-/**
- * Action Executor — Content Script
+﻿/**
+ * Action Executor â€” Content Script
  * Executes structured actions (click, type, scroll, select, navigate)
  * on DOM elements identified by the agent.
  *
@@ -10,7 +10,7 @@
 
   const BA = window.__BrowserAgent = window.__BrowserAgent || {};
 
-  // ── Helpers ──────────────────────────────────────────────────
+  // â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   function getElement(id) {
     var el = BA.elementMap && BA.elementMap.get(id);
@@ -93,21 +93,17 @@
     el.dispatchEvent(new KeyboardEvent('keyup',    keyProps));
   }
 
-  // ── Main dispatcher ──────────────────────────────────────────
+  // â”€â”€ Main dispatcher â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   function executeAction(action) {
     var type      = action.type;
     var elementId = action.elementId;
     var text      = action.text;
-    var value     = action.value;
-    var url       = action.url;
-    var deltaX    = action.deltaX || 0;
-    var deltaY    = action.deltaY || 0;
 
     try {
       switch (type) {
 
-        // ── Click ────────────────────────────────────────────
+        // â”€â”€ Click â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         case 'click': {
           var el = getElement(elementId);
           el.focus();
@@ -124,7 +120,7 @@
           return { success: true, action: type };
         }
 
-        // ── Type ─────────────────────────────────────────────
+        // â”€â”€ Type â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         case 'type': {
           if (text === undefined || text === null) {
             return { success: false, error: 'No text provided for type action' };
@@ -134,7 +130,7 @@
           return { success: true, action: type, typed: text };
         }
 
-        // ── Type + Submit (press Enter after typing) ──────────
+        // â”€â”€ Type + Submit (press Enter after typing) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         // The agent can use type:"typeAndSubmit" to do both in one step
         case 'typeAndSubmit': {
           if (text === undefined || text === null) {
@@ -146,7 +142,7 @@
           return { success: true, action: type, typed: text };
         }
 
-        // ── Scroll ───────────────────────────────────────────
+        // â”€â”€ Scroll â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         case 'scroll': {
           var target = window;
           
@@ -186,7 +182,7 @@
           return { success: true, action: type };
         }
 
-        // ── Select (dropdown) ────────────────────────────────
+        // â”€â”€ Select (dropdown) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         case 'select': {
           var el = getElement(elementId);
           el.value = value;
@@ -194,14 +190,14 @@
           return { success: true, action: type, selected: value };
         }
 
-        // ── Navigate ─────────────────────────────────────────
+        // â”€â”€ Navigate â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         case 'navigate': {
           if (!url) return { success: false, error: 'No URL provided for navigate action' };
           window.location.href = url;
           return { success: true, action: type, url: url };
         }
 
-        // ── Press Key ────────────────────────────────────────
+        // â”€â”€ Press Key â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         case 'pressKey': {
           var el = elementId ? getElement(elementId) : document.activeElement;
           var key = text || 'Enter';
@@ -215,7 +211,7 @@
           return { success: true, action: type, key: key };
         }
 
-        // ── Hover ────────────────────────────────────────────
+        // â”€â”€ Hover â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         case 'hover': {
           var el = getElement(elementId);
           el.focus();
@@ -239,3 +235,5 @@
   BA.executeAction = executeAction;
 
 })();
+
+

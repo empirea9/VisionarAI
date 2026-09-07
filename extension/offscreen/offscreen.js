@@ -1,5 +1,5 @@
-/**
- * Offscreen Document — ML Inference Runtime
+﻿/**
+ * Offscreen Document â€” ML Inference Runtime
  *
  * This runs in an offscreen document (has DOM + Canvas access).
  * It handles all heavy ML tasks that the service worker can't do:
@@ -8,19 +8,19 @@
  *   - Vision analysis
  *   - Image cropping
  *
- * Communication: chrome.runtime.onMessage ↔ service-worker
+ * Communication: chrome.runtime.onMessage â†” service-worker
  *
  * NOTE: For the prototype, OCR uses a lightweight approach.
  * Tesseract.js / ONNX models will be loaded on first use and cached.
  */
 
-// ── State ──────────────────────────────────────────────────────
+// â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 let tesseractWorker = null;
 let faceDetector    = null;
 let modelsLoading   = false;
 
-// ── Message handler ────────────────────────────────────────────
+// â”€â”€ Message handler â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   switch (msg.type) {
@@ -41,7 +41,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         });
       return true;
 
-    case 'OFFSCREEN_VISION':
+    case 'OFFSCREEN_FULL_PRIVACY': return sendResponse(await handleFullPrivacyPipeline(msg.image, msg.allowFaces)), true; case 'OFFSCREEN_VISION':
       handleVision(msg.image, msg.query)
         .then(sendResponse)
         .catch(function (err) {
@@ -59,7 +59,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   }
 });
 
-// ── OCR Handler ────────────────────────────────────────────────
+// â”€â”€ OCR Handler â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function handleOCR(imageDataUrl) {
   // For the prototype, we use the Canvas API to extract basic info.
@@ -91,10 +91,10 @@ async function handleOCR(imageDataUrl) {
     }
 
     // Fallback: return empty (OCR library not loaded yet)
-    console.warn('[Offscreen] Tesseract.js not loaded — OCR unavailable');
+    console.warn('[Offscreen] Tesseract.js not loaded â€” OCR unavailable');
     return {
       success: true,
-      text:    '[OCR not available — Tesseract.js not loaded]',
+      text:    '[OCR not available â€” Tesseract.js not loaded]',
       regions: []
     };
   } catch (err) {
@@ -102,7 +102,7 @@ async function handleOCR(imageDataUrl) {
   }
 }
 
-// ── Face Detection Handler ─────────────────────────────────────
+// â”€â”€ Face Detection Handler â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function handleFaceDetection(imageDataUrl) {
   // For the prototype, this is a stub.
@@ -138,19 +138,19 @@ async function handleFaceDetection(imageDataUrl) {
   }
 }
 
-// ── Vision Handler ─────────────────────────────────────────────
+// â”€â”€ Vision Handler â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function handleVision(imageDataUrl, query) {
   // Stub for prototype.
   // In production, use a visual Q&A or image classification model.
   return {
     success:     true,
-    description: '[Vision model not loaded — stub response]',
+    description: '[Vision model not loaded â€” stub response]',
     objects:     []
   };
 }
 
-// ── Image Cropping ─────────────────────────────────────────────
+// â”€â”€ Image Cropping â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function handleCrop(imageDataUrl, bbox) {
   return new Promise(function (resolve, reject) {
@@ -177,3 +177,4 @@ async function handleCrop(imageDataUrl, bbox) {
 }
 
 console.log('[Offscreen] ML runtime loaded');
+

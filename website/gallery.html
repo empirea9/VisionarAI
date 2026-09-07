@@ -1,0 +1,201 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VisionarAI - Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site">
+    <header class="topbar">
+      <div class="brand">
+        <p class="kicker">PRIVATE BROWSER AUTOMATION</p>
+        <h1>Gallery</h1>
+      </div>
+      <nav class="nav">
+        <a href="/">HOME</a>
+        <a href="/documentation">DOCUMENTATION</a>
+        <a class="active" href="/gallery">GALLERY</a>
+        <a href="/team">TEAM</a>
+        <a href="#" id="theme-toggle" class="theme-toggle" style="text-decoration:none; margin-left:8px; cursor:pointer;" title="Toggle Theme">🌙</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="panel" >
+        <p class="label">SYSTEM / GALLERY</p>
+        <h2>IN ACTION</h2>
+        <p style="margin:8px 0 0;  max-width: 60ch;">A visual tour of the VisionarAI agent in motion, executing tasks locally without exposing sensitive data.</p>
+      </section>
+
+      <section style="padding: 0 0 40px;">
+        <div class="gallery-stack">
+          
+          <div class="gallery-row reveal panel" style="padding: 32px;  --theme-color: var(--lavender); --theme-dark: var(--lavender-dark);">
+            <div class="gallery-visual">
+              <div class="visual-number">001</div>
+              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="assets/gallery-1-pii.png">
+                <img src="assets/gallery-1-pii-thumb.png" alt="PII Redaction Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
+                <button class="zoom-btn" title="Fullscreen" aria-label="Zoom in">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                </button>
+              </div>
+              <div class="visual-label">PII REDACTION</div>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-text"><h3>PII Redaction Engine</h3><p>Directly masks personal identifiers before model requests. Our on-device regex and ML pipelines detect names, credit cards, and addresses locally, ensuring no sensitive user data ever leaves the browser environment during agentic workflows.</p></div>
+                <div class="tech-tags">
+                  <span class="tech-tag">regex_engine.js</span>
+                  <span class="tech-tag">OffscreenCanvas</span>
+                  <span class="tech-tag">Local Execution</span>
+                </div>
+              </div>
+            </div>
+
+          <div class="gallery-row reveal panel" style="padding: 32px;  --theme-color: var(--mint); --theme-dark: var(--mint-dark);">
+            <div class="gallery-visual">
+              <div class="visual-number">002</div>
+              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="assets/gallery-2-vision.png">
+                <img src="assets/gallery-2-vision-thumb.png" alt="Spatial Vision Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
+                <button class="zoom-btn" title="Fullscreen" aria-label="Zoom in">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                </button>
+              </div>
+              <div class="visual-label">VISUAL REASONING</div>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-text"><h3>Spatial Visual Reasoning</h3><p>Standard DOM automation fails completely when icons lack ARIA labels or text. VisionarAI uses actual screen pixels and physical geometry to visually identify and click unmarked UI elements, like the YouTube "Like" button, navigating layouts exactly as a human would.</p></div>
+                <div class="tech-tags">
+                  <span class="tech-tag">gemini-1.5-flash</span>
+                  <span class="tech-tag">BoundingBox Mapping</span>
+                  <span class="tech-tag">Spatial Geometry</span>
+                </div>
+              </div>
+            </div>
+
+          <div class="gallery-row reveal panel" style="padding: 32px;  --theme-color: var(--coral); --theme-dark: var(--coral-dark);">
+            <div class="gallery-visual">
+              <div class="visual-number">003</div>
+              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="assets/gallery-3-ocr.png">
+                <img src="assets/gallery-3-ocr-thumb.png" alt="Visual Data Extraction Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
+                <button class="zoom-btn" title="Fullscreen" aria-label="Zoom in">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                </button>
+              </div>
+              <div class="visual-label">DATA EXTRACTION</div>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-text"><h3>Trapped Data Extraction</h3><p>Standard agents rely on raw HTML text. VisionarAI seamlessly extracts tabular data, complex code, and text completely trapped inside non-HTML sources like PDF viewers, images, and video players. It effortlessly reads structured data straight from the pixels.</p></div>
+                <div class="tech-tags">
+                  <span class="tech-tag">Cross-Origin Bypassed</span>
+                  <span class="tech-tag">OCR Pipeline</span>
+                  <span class="tech-tag">Unstructured Data</span>
+                </div>
+              </div>
+            </div>
+
+          <div class="gallery-row reveal panel" style="padding: 32px;  --theme-color: #bfdbfe; --theme-dark: #60a5fa;">
+            <div class="gallery-visual">
+              <div class="visual-number">004</div>
+              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="assets/gallery-4-privacy.png">
+                <img src="assets/gallery-4-privacy-thumb.png" alt="Dynamic Masking Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
+                <button class="zoom-btn" title="Fullscreen" aria-label="Zoom in">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                </button>
+              </div>
+              <div class="visual-label">DYNAMIC MASKING</div>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-text"><h3>Zero-Trust Sanitization</h3><p>Even when interacting with highly sensitive applications like WhatsApp, VisionarAI ensures absolute privacy by dynamically identifying and blanking out phone numbers, credit cards, and addresses directly on the Canvas. The visual model simply receives blank spaces, ensuring your personal data is mathematically impossible to leak.</p></div>
+                <div class="tech-tags">
+                  <span class="tech-tag">Zero-Trust Protocol</span>
+                  <span class="tech-tag">DOM Injection</span>
+                  <span class="tech-tag">Dynamic Redaction</span>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </section>
+    </main>
+
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span>&gt; SCRUBBING DOM... &gt; FACE DETECTOR IDLE... &gt; OCR ACTIVE... &gt; AGENT CONFIDENCE: STABLE...</span>
+        <span>&gt; SCRUBBING DOM... &gt; FACE DETECTOR IDLE... &gt; OCR ACTIVE... &gt; AGENT CONFIDENCE: STABLE...</span>
+      </div>
+      <div class="ticker">
+        <span>&gt; SCRUBBING DOM... &gt; FACE DETECTOR IDLE... &gt; OCR ACTIVE... &gt; AGENT CONFIDENCE: STABLE...</span>
+        <span>&gt; SCRUBBING DOM... &gt; FACE DETECTOR IDLE... &gt; OCR ACTIVE... &gt; AGENT CONFIDENCE: STABLE...</span>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <span>VISIONARAI GALLERY / VISUAL PROOF</span>
+      <span>SIH 214 / CHITTI ROBOS</span>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+      // Lightbox Logic
+      document.addEventListener('DOMContentLoaded', () => {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Open lightbox when clicking the container or zoom button
+        document.querySelectorAll('.gallery-zoom-container').forEach(container => {
+          container.addEventListener('click', (e) => {
+            const fullSrc = container.getAttribute('data-full');
+            if (fullSrc) {
+              lightboxImg.src = fullSrc;
+              lightbox.classList.add('active');
+            }
+          });
+        });
+
+        // Close lightbox
+        closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+        lightbox.addEventListener('click', (e) => {
+          if (e.target !== lightboxImg) lightbox.classList.remove('active');
+        });
+      });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

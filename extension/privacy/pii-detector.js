@@ -1,14 +1,14 @@
-/**
- * PII Detector — ES module (imported by service-worker)
+﻿/**
+ * PII Detector â€” ES module (imported by service-worker)
  * Detects personally-identifiable information in text and DOM metadata.
- * Runs entirely locally — no data leaves the browser.
+ * Runs entirely locally â€” no data leaves the browser.
  */
 
-// ── Regex patterns for common PII ──────────────────────────────
+// â”€â”€ Regex patterns for common PII â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const PATTERNS = {
   EMAIL:        /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/g,
-  PHONE:        /(?:\+\d{1,3}[\s\-]?)?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{4}\b/g,
+  PHONE:        /(?:\+\d{1,3}[\s\-]?)?(?:\(?\d{2,5}\)?[\s\-]?){1,3}\d{4,7}\b/g,
   CREDIT_CARD:  /\b(?:\d[ \-]*?){13,19}\b/g,
   SSN:          /\b\d{3}[\s\-]?\d{2}[\s\-]?\d{4}\b/g,
   AADHAAR:      /\b\d{4}[\s\-]?\d{4}[\s\-]?\d{4}\b/g,
@@ -108,3 +108,5 @@ export function scanPageState(pageState) {
     regions:       regions
   };
 }
+
+

@@ -80,7 +80,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     case 'OFFSCREEN_FACE_DETECT':  handler = handleFaceDetection(msg.image); break;
     case 'OFFSCREEN_VISION':       handler = handleVision(msg.image, msg.query); break;
     case 'OFFSCREEN_CROP':         handler = handleCrop(msg.image, msg.bbox); break;
-    case 'OFFSCREEN_FULL_PRIVACY': handler = handleFullPrivacyPipeline(msg.image); break;
+    case 'OFFSCREEN_FULL_PRIVACY': handler = handleFullPrivacyPipeline(msg.image, msg.allowFaces); break;
     case 'OFFSCREEN_GET_STATUS':   sendResponse({ success: true, status: STATUS }); return;
     default: return;
   }
@@ -163,12 +163,28 @@ async function handleVision(imageDataUrl, query) {
 // ── Full Privacy Pipeline ──────────────────────────────────────
 //    Screenshot → detect faces + OCR PII → redact → return sanitized
 
-async function handleFullPrivacyPipeline(imageDataUrl) {
+async function handleFullPrivacyPipeline(imageDataUrl, allowFaces = false) {
   var privacyRegions = [];
 
-  // 1. Face/Person blurring is DISABLED by default. 
-  // It interferes with tasks like identifying actors in videos, 
-  // and for sensitive local forms, Vision AI isn't triggered anyway (DOM is used).
+  // 1. Face/Person blurring (unless user explicitly requested to see faces)
+  if (!allowFaces) {
+  try {
+    var detector = await getObjectDetector();
+    if (detector) {
+      var results = await detector(imageDataUrl, { threshold: 0.5 });
+      results.forEach(function (r) {
+        if (r.label === 'person') {
+          privacyRegions.push({
+            type: 'PERSON',
+            bbox: [r.box.xmin, r.box.ymin, r.box.xmax - r.box.xmin, r.box.ymax - r.box.ymin],
+          });
+        }
+      });
+    }
+  } catch (err) {
+    console.warn('[Offscreen] Person detection failed:', err.message);
+  }
+  }
 
   // 2. Run OCR and scan for PII
   var ocrText = '';

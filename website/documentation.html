@@ -1,0 +1,532 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VisionarAI - Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .docs-layout { display: grid; grid-template-columns: 240px 1fr; gap: 24px; align-items: start; }
+    .docs-sidebar { position: sticky; top: 100px; border: 2px solid var(--ink); border-radius: 4px; background: #fff; box-shadow: 4px 4px 0 var(--ink); max-height: calc(100vh - 140px); overflow-y: auto; overflow-x: hidden; }
+    .sidebar-heading { background: var(--ink); color: #fff; font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; padding: 10px 14px; }
+    .sidebar-group { border-bottom: 1px solid #e5e7eb; padding: 8px 0; }
+    .sidebar-group-label { font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: #888; padding: 6px 14px 2px; }
+    .sidebar-link { display: block; padding: 6px 14px; font-size: 13px; font-weight: 600; color: #333; border-left: 3px solid transparent; transition: background 80ms, border-color 80ms; }
+    .sidebar-link:hover { background: var(--lavender); border-left-color: var(--ink); }
+    .docs-content { display: grid; gap: 32px; }
+    .module-card { border: 2px solid var(--ink); background: #fff; box-shadow: 4px 4px 0 var(--ink); border-radius: 4px; overflow: hidden; }
+    .module-header { background: var(--ink); color: #fff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .module-name { font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; margin: 0; }
+    .module-path { font-family: "JetBrains Mono", monospace; font-size: 12px; color: #a7f3d0; margin-top: 4px; }
+    .module-badge { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.4); border-radius: 2px; white-space: nowrap; }
+    .badge-bg { background: rgba(167,243,208,0.2); } .badge-ag { background: rgba(233,213,255,0.2); } .badge-co { background: rgba(254,202,202,0.2); } .badge-pe { background: rgba(167,243,208,0.15); } .badge-pr { background: rgba(254,202,202,0.2); } .badge-of { background: rgba(233,213,255,0.2); }
+    .module-body { padding: 20px; overflow-x: auto; }
+    .module-purpose { font-size: 15px; line-height: 1.65; color: #334155; margin: 0 0 24px; padding-bottom: 16px; border-bottom: 2px dashed #e5e7eb; }
+    .subsection { margin-bottom: 28px; }
+    .subsection-title { font-size: 12px; font-weight: 800; font-family: "JetBrains Mono", monospace; border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 12px; letter-spacing: 0.08em; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 14px; }
+    .tbl-fn th { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 10px 12px; text-align: left; font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; }
+    .tbl-fn td { border: 1px solid #e2e8f0; padding: 10px 12px; vertical-align: top; line-height: 1.5; word-break: break-word; }
+    .tbl-fn tr:nth-child(even) td { background: #fafafa; }
+    .tbl-const th { background: var(--mint); border: 1px solid #6ee7b7; padding: 10px 12px; text-align: left; font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; }
+    .tbl-const td { border: 1px solid #e2e8f0; padding: 10px 12px; vertical-align: top; line-height: 1.5; word-break: break-word; }
+    .tbl-const tr:nth-child(even) td { background: #fafafa; }
+    .tbl-msg th { background: var(--lavender); border: 1px solid #c4b5fd; padding: 10px 12px; text-align: left; font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; }
+    .tbl-msg td { border: 1px solid #e2e8f0; padding: 10px 12px; vertical-align: top; line-height: 1.5; word-break: break-word; }
+    .tbl-msg tr:nth-child(even) td { background: #fafafa; }
+    code { font-family: "JetBrains Mono", monospace; font-size: 12px; background: #f1f5f9; padding: 2px 6px; border-radius: 3px; border: 1px solid #e2e8f0; word-break: break-word; white-space: pre-wrap; }
+    .exp { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 700; padding: 2px 6px; background: var(--mint); border: 1px solid #6ee7b7; border-radius: 2px; }
+    .prv { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 700; padding: 2px 6px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 2px; }
+    .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 10px; margin-bottom: 20px; }
+    .action-item { border: 2px solid var(--ink); padding: 12px; background: #fff; box-shadow: 3px 3px 0 var(--grid); }
+    .action-item code { background: var(--ink); color: #a7f3d0; border: none; font-size: 13px; padding: 3px 8px; }
+    .action-item p { margin: 8px 0 0; font-size: 13px; color: #444; line-height: 1.4; }
+    @media (max-width: 768px) { .docs-layout { grid-template-columns: 1fr; } .docs-sidebar { position: static; } }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header class="topbar">
+      <div class="brand">
+        <p class="kicker">PRIVATE BROWSER AUTOMATION</p>
+        <h1>Documentation</h1>
+      </div>
+      <nav class="nav">
+        <a href="/">HOME</a>
+        <a class="active" href="/documentation">DOCUMENTATION</a>
+        <a href="/gallery">GALLERY</a>
+        <a href="/team">TEAM</a><a href="#" id="theme-toggle" class="theme-toggle" style="text-decoration:none; margin-left:8px; cursor:pointer;" title="Toggle Theme">🌙</a>
+      </nav>
+    </header>
+    <main>
+      <section class="panel" style="padding:28px 32px;">
+        <p class="label">SYSTEM / DOCUMENTATION</p>
+        <h2 style="margin:8px 0 4px;font-size:clamp(28px,4vw,42px);">Module API Reference</h2>
+        <p style="margin:0;font-size:16px;max-width:70ch;line-height:1.6;">Complete technical documentation for all VisionarAI extension modules. Every function, constant, message handler, and data type sourced directly from the codebase.</p>
+      </section>
+      <div class="docs-layout">
+        <aside class="docs-sidebar">
+          <div class="sidebar-heading">MODULE INDEX</div>
+          <div class="sidebar-group">
+            <div class="sidebar-group-label">BACKGROUND</div>
+            <a class="sidebar-link" href="#service-worker">service-worker</a>
+          </div>
+          <div class="sidebar-group">
+            <div class="sidebar-group-label">AGENT</div>
+            <a class="sidebar-link" href="#agent">agent</a>
+            <a class="sidebar-link" href="#context-builder">context-builder</a>
+            <a class="sidebar-link" href="#agent-action-executor">action-executor</a>
+          </div>
+          <div class="sidebar-group">
+            <div class="sidebar-group-label">CONTENT</div>
+            <a class="sidebar-link" href="#dom-collector">dom-collector</a>
+            <a class="sidebar-link" href="#content-action-executor">action-executor</a>
+            <a class="sidebar-link" href="#page-parser">page-parser</a>
+            <a class="sidebar-link" href="#page-state">page-state</a>
+          </div>
+          <div class="sidebar-group">
+            <div class="sidebar-group-label">PERCEPTION</div>
+            <a class="sidebar-link" href="#router">router</a>
+            <a class="sidebar-link" href="#screenshot">screenshot</a>
+            <a class="sidebar-link" href="#ocr">ocr</a>
+            <a class="sidebar-link" href="#vision">vision</a>
+          </div>
+          <div class="sidebar-group">
+            <div class="sidebar-group-label">PRIVACY</div>
+            <a class="sidebar-link" href="#pii-detector">pii-detector</a>
+            <a class="sidebar-link" href="#redactor">redactor</a>
+            <a class="sidebar-link" href="#face-detector">face-detector</a>
+          </div>
+          <div class="sidebar-group">
+            <div class="sidebar-group-label">OFFSCREEN</div>
+            <a class="sidebar-link" href="#offscreen">offscreen.src</a>
+          </div>
+        </aside>
+        <div class="docs-content">
+
+          <!-- SERVICE WORKER -->
+          <div class="module-card reveal" id="service-worker">
+            <div class="module-header">
+              <div><p class="module-name">service-worker</p><p class="module-path">extension/background/service-worker.js</p></div>
+              <span class="module-badge badge-bg">BACKGROUND</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">Central ES-module background service worker. Orchestrates the full agent loop: reads page state from the content script, decides which perception pipeline to run (DOM-only, screenshot+OCR, or vision), runs the privacy sanitisation pipeline, invokes the Gemini LLM via <code>agent.js</code>, dispatches returned actions to the content script, and loops until complete or <code>MAX_ITERATIONS</code> is reached. Manages the Chrome offscreen document lifecycle.</p>
+              <div class="subsection">
+                <div class="subsection-title">CONSTANTS</div>
+                <table class="tbl-const"><thead><tr><th>Name</th><th>Value</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>MAX_ITERATIONS</code></td><td><code>50</code></td><td>Maximum agentic loop iterations before force-stopping.</td></tr>
+                  <tr><td><code>VISION_KEYWORDS</code></td><td><code>RegExp</code></td><td>Triggers screenshot + vision model processing.</td></tr>
+                  <tr><td><code>OCR_KEYWORDS</code></td><td><code>RegExp</code></td><td>Triggers screenshot + OCR processing.</td></tr>
+                  <tr><td><code>CLICK_KEYWORDS</code></td><td><code>RegExp</code></td><td>Indicates a click/interaction task.</td></tr>
+                  <tr><td><code>TYPE_KEYWORDS</code></td><td><code>RegExp</code></td><td>Indicates a type/fill task.</td></tr>
+                  <tr><td><code>SCROLL_KEYWORDS</code></td><td><code>RegExp</code></td><td>Indicates scroll-only task - fast-paths to DOM-only perception.</td></tr>
+                </tbody></table>
+              </div>
+              <div class="subsection">
+                <div class="subsection-title">MESSAGE HANDLERS</div>
+                <table class="tbl-msg"><thead><tr><th>Message Type</th><th>Params</th><th>Responds With</th></tr></thead><tbody>
+                  <tr><td><code>RUN_TASK</code></td><td><code>{ task: string, tabId?: number }</code></td><td><code>{ success, answer, actions, privacy, steps }</code></td></tr>
+                  <tr><td><code>CANCEL_TASK</code></td><td>-</td><td><code>{ success: true }</code></td></tr>
+                  <tr><td><code>SET_SERVER_URL</code></td><td><code>{ url: string }</code></td><td><code>{ success: true, serverUrl: string }</code></td></tr>
+                  <tr><td><code>GET_STATUS</code></td><td>-</td><td><code>{ serverUrl: string, offscreen: boolean }</code></td></tr>
+                  <tr><td><code>CHECK_SERVER</code></td><td>-</td><td><code>{ success: true, online: true }</code></td></tr>
+                  <tr><td><code>PRELOAD_MODELS</code></td><td>-</td><td><code>{ success: true } | { success: false, error }</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>getPerceptionPlan</code> <span class="prv">private</span></td><td><code>task, pageState</code></td><td><code>PerceptionPlan</code></td><td>Keyword-heuristic router. Defaults screenshot and vision to <code>true</code>; fast-paths scroll commands to DOM-only.</td></tr>
+                  <tr><td><code>ensureOffscreen</code> <span class="prv">private</span></td><td>-</td><td><code>Promise&lt;void&gt;</code></td><td>Creates the offscreen document if not already created. Idempotent via <code>offscreenCreated</code> flag.</td></tr>
+                  <tr><td><code>handleTask</code> <span class="prv">private</span></td><td><code>task, tabId?</code></td><td><code>Promise&lt;TaskResult&gt;</code></td><td>Core agentic loop. Runs perception + privacy, calls <code>runAgent()</code> up to MAX_ITERATIONS, dispatches actions to content script, prevents infinite loops via action de-duplication.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- AGENT -->
+          <div class="module-card reveal" id="agent">
+            <div class="module-header">
+              <div><p class="module-name">agent</p><p class="module-path">extension/agent/agent.js</p></div>
+              <span class="module-badge badge-ag">AGENT</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">ES module that communicates with the <strong>Gemini API (gemini-2.0-flash-lite)</strong> to determine the next browser action. Accepts task, page state, optional base64 screenshot, and action history. Returns structured JSON with <code>answer</code>, <code>actions[]</code>, and <code>reasoning</code>. Hard-caps responses to 3 actions maximum per call. Uses <code>temperature: 0.0</code> for deterministic outputs.</p>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>buildPrompt</code> <span class="prv">private</span></td><td><code>task, pageState, actionHistory, retryReason</code></td><td><code>string</code></td><td>Builds the user-turn prompt. Includes numbered action history with success/fail icons, current URL/title, interactive elements table, and page text extracts.</td></tr>
+                  <tr><td><code>runAgent</code> <span class="exp">exported</span></td><td><code>apiKey, task, pageState, visualContextBase64, actionHistory, retryReason</code></td><td><code>Promise&lt;{ answer, actions, reasoning }&gt;</code></td><td>POSTs to Gemini v1beta <code>generateContent</code> with <code>response_mime_type: "application/json"</code>. Throws on HTTP error or JSON parse failure.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTEXT BUILDER -->
+          <div class="module-card reveal" id="context-builder">
+            <div class="module-header">
+              <div><p class="module-name">context-builder</p><p class="module-path">extension/agent/context-builder.js</p></div>
+              <span class="module-badge badge-ag">AGENT</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">ES module that constructs the <code>AgentRequest</code> payload sent to the LLM. Applies a token budget by compacting the <code>PageState</code> - slicing elements, text blocks, and media to configurable maximums.</p>
+              <div class="subsection">
+                <div class="subsection-title">CONSTANTS</div>
+                <table class="tbl-const"><thead><tr><th>Name</th><th>Value</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>MAX_ELEMENTS</code></td><td><code>150</code></td><td>Maximum visible elements forwarded to the LLM.</td></tr>
+                  <tr><td><code>MAX_TEXT_BLOCKS</code></td><td><code>60</code></td><td>Maximum relevant text blocks forwarded.</td></tr>
+                  <tr><td><code>MAX_MEDIA</code></td><td><code>30</code></td><td>Maximum media elements forwarded.</td></tr>
+                </tbody></table>
+              </div>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>buildAgentRequest</code> <span class="exp">exported</span></td><td><code>task, pageState, visualContext, privacyMeta</code></td><td><code>AgentRequest</code></td><td>Calls <code>compactPageState()</code> then wraps into the AgentRequest shape. Privacy fields default safely to <code>false/0/[]</code> if null.</td></tr>
+                  <tr><td><code>compactPageState</code> <span class="prv">private</span></td><td><code>ps: PageState</code></td><td><code>CompactPageState</code></td><td>Filters to visible-only elements, slices to budget constants, truncates element text to 80 chars.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- AGENT ACTION EXECUTOR -->
+          <div class="module-card reveal" id="agent-action-executor">
+            <div class="module-header">
+              <div><p class="module-name">agent / action-executor</p><p class="module-path">extension/agent/action-executor.js</p></div>
+              <span class="module-badge badge-ag">AGENT - LEGACY</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">Legacy/simplified IIFE action executor attaching to <code>window.__BrowserAgent</code>. Implements a subset of action types: <code>click</code>, <code>type</code>, <code>scroll</code>, <code>select</code>, <code>navigate</code>. Superseded in production by the fuller <code>content/action-executor.js</code>.</p>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>BA.executeAction</code> <span class="exp">exported</span></td><td><code>action: Action</code></td><td><code>{ success, ... }</code></td><td>Dispatches to doClick, doType, doScroll, doSelect, or doNavigate based on <code>action.type</code>.</td></tr>
+                  <tr><td><code>doClick</code> <span class="prv">private</span></td><td><code>action</code></td><td><code>{ success }</code></td><td>Looks up element in <code>BA.elementMap</code>, scrolls into view, dispatches mouse events then <code>el.click()</code>.</td></tr>
+                  <tr><td><code>doType</code> <span class="prv">private</span></td><td><code>action</code></td><td><code>{ success }</code></td><td>Focuses element, clears value, sets <code>el.value</code>, fires <code>input</code> and <code>change</code> events.</td></tr>
+                  <tr><td><code>doScroll</code> <span class="prv">private</span></td><td><code>action</code></td><td><code>{ success: true }</code></td><td>Calls <code>window.scrollBy</code> with smooth behaviour. deltaY defaults to 500.</td></tr>
+                  <tr><td><code>doNavigate</code> <span class="prv">private</span></td><td><code>action</code></td><td><code>{ success }</code></td><td>Sets <code>window.location.href</code>. Returns error if URL is missing.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- DOM COLLECTOR -->
+          <div class="module-card reveal" id="dom-collector">
+            <div class="module-header">
+              <div><p class="module-name">content / dom-collector</p><p class="module-path">extension/content/dom-collector.js</p></div>
+              <span class="module-badge badge-co">CONTENT</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">Content-script IIFE that queries the live DOM for all interactive and media elements visible in the current viewport. Assigns stable integer IDs to elements, stores references in <code>BA.elementMap</code> for later action execution. Hard-caps output at 150 elements sorted top-to-bottom.</p>
+              <div class="subsection">
+                <div class="subsection-title">EXPORTED PROPERTIES</div>
+                <table class="tbl-const"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>BA.elementMap</code></td><td><code>Map&lt;number, HTMLElement&gt;</code></td><td>Live element registry keyed by sequential integer ID.</td></tr>
+                  <tr><td><code>BA.INTERACTIVE_SEL</code></td><td><code>string</code></td><td>CSS selector covering button, a, input, textarea, select, ARIA roles, etc.</td></tr>
+                  <tr><td><code>BA.MEDIA_SEL</code></td><td><code>string</code></td><td><code>'img, video, canvas, svg, iframe, object, embed'</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>BA.collectElements</code> <span class="exp">exported</span></td><td>-</td><td><code>ElementDescriptor[]</code></td><td>Clears and rebuilds <code>BA.elementMap</code>. Each descriptor: <code>{ id, tag, type, text, ariaLabel, placeholder, bbox, visible, value, href, src, name, inputType, checked, disabled }</code>.</td></tr>
+                  <tr><td><code>isVisibleAndInViewport</code> <span class="prv">private</span></td><td><code>el, rect</code></td><td><code>boolean</code></td><td>Returns false if element has zero size, display:none, visibility:hidden, opacity:0, or is outside the viewport.</td></tr>
+                  <tr><td><code>getText</code> <span class="prv">private</span></td><td><code>el</code></td><td><code>string</code></td><td>Prefers aria-label, falls back to innerText/textContent.</td></tr>
+                  <tr><td><code>getType</code> <span class="prv">private</span></td><td><code>el</code></td><td><code>string</code></td><td>Returns ARIA role if present, else input.type for inputs, 'link' for anchors, or the tag name.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTENT ACTION EXECUTOR -->
+          <div class="module-card reveal" id="content-action-executor">
+            <div class="module-header">
+              <div><p class="module-name">content / action-executor</p><p class="module-path">extension/content/action-executor.js</p></div>
+              <span class="module-badge badge-co">CONTENT</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">Full-featured content-script IIFE action executor. Handles all 8 action types. Critically supports both standard <code>input</code>/<code>textarea</code> and <strong>contenteditable</strong> elements (WhatsApp, Gmail, Notion) by using <code>document.execCommand</code> and native value setters to fire React/Vue synthetic events correctly.</p>
+              <div class="subsection">
+                <div class="subsection-title">ACTION TYPES</div>
+                <div class="action-grid">
+                  <div class="action-item"><code>click</code><p>Focuses, calls el.click(), dispatches mousedown/mouseup/click.</p></div>
+                  <div class="action-item"><code>type</code><p>Calls typeIntoElement - supports standard and contenteditable inputs.</p></div>
+                  <div class="action-item"><code>typeAndSubmit</code><p>typeIntoElement then setTimeout(pressEnter, 100).</p></div>
+                  <div class="action-item"><code>scroll</code><p>Scrolls element if scrollable, else finds largest scrollable ancestor.</p></div>
+                  <div class="action-item"><code>select</code><p>Sets el.value and fires change event.</p></div>
+                  <div class="action-item"><code>navigate</code><p>Sets window.location.href.</p></div>
+                  <div class="action-item"><code>pressKey</code><p>Dispatches keydown+keyup on element or document.activeElement.</p></div>
+                  <div class="action-item"><code>hover</code><p>Focuses element, dispatches mouseenter/mouseover/mousemove.</p></div>
+                </div>
+              </div>
+              <div class="subsection">
+                <div class="subsection-title">KEY FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>BA.executeAction</code> <span class="exp">exported</span></td><td><code>action: Action</code></td><td><code>{ success, ... }</code></td><td>Main dispatcher. Returns { success: false, error } on unknown type or thrown exception.</td></tr>
+                  <tr><td><code>typeIntoElement</code> <span class="prv">private</span></td><td><code>el, text</code></td><td><code>void</code></td><td>For contenteditable: uses document.execCommand('insertText') + per-character key events. For standard inputs: uses native value setter so React onChange fires.</td></tr>
+                  <tr><td><code>pressEnter</code> <span class="prv">private</span></td><td><code>el</code></td><td><code>void</code></td><td>Dispatches keydown/keypress/keyup with key='Enter', keyCode=13.</td></tr>
+                  <tr><td><code>getElement</code> <span class="prv">private</span></td><td><code>id: number</code></td><td><code>HTMLElement</code></td><td>Looks up ID in BA.elementMap. Throws if missing.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGE PARSER -->
+          <div class="module-card reveal" id="page-parser">
+            <div class="module-header">
+              <div><p class="module-name">content / page-parser</p><p class="module-path">extension/content/page-parser.js</p></div>
+              <span class="module-badge badge-co">CONTENT</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">Content-script IIFE that extracts media elements and relevant text from the page to supplement the interactive-element list produced by dom-collector.js.</p>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>BA.extractMedia</code> <span class="exp">exported</span></td><td>-</td><td><code>MediaDescriptor[]</code></td><td>Queries BA.MEDIA_SEL. Skips elements smaller than 10x10px. Returns { index, tag, src, alt, bbox, isCanvas, isSVG, width, height }.</td></tr>
+                  <tr><td><code>BA.extractText</code> <span class="exp">exported</span></td><td>-</td><td><code>TextBlock[]</code></td><td>Queries headings, paragraphs, list items, table cells, blockquotes, figcaptions. Filters to 3-500 chars. Deduplicates. Caps at 100 blocks.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGE STATE -->
+          <div class="module-card reveal" id="page-state">
+            <div class="module-header">
+              <div><p class="module-name">content / page-state</p><p class="module-path">extension/content/page-state.js</p></div>
+              <span class="module-badge badge-co">CONTENT</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">Content-script IIFE - the entry point for all content-script messaging. Assembles the full PageState and registers the chrome.runtime.onMessage listener for the service worker.</p>
+              <div class="subsection">
+                <div class="subsection-title">MESSAGE HANDLERS</div>
+                <table class="tbl-msg"><thead><tr><th>Message Type</th><th>Params</th><th>Responds With</th></tr></thead><tbody>
+                  <tr><td><code>GET_PAGE_STATE</code></td><td>-</td><td><code>{ success: true, pageState: PageState }</code></td></tr>
+                  <tr><td><code>EXECUTE_ACTION</code></td><td><code>{ action: Action }</code></td><td>Result of BA.executeAction(action)</td></tr>
+                  <tr><td><code>EXECUTE_ACTIONS</code></td><td><code>{ actions: Action[] }</code></td><td><code>{ success: true, results: ActionResult[] }</code> - sequential with 300ms delays.</td></tr>
+                </tbody></table>
+              </div>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>BA.buildPageState</code> <span class="exp">exported</span></td><td><code>PageState</code></td><td>Synchronously assembles the full snapshot by calling all three collector modules.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROUTER -->
+          <div class="module-card reveal" id="router">
+            <div class="module-header">
+              <div><p class="module-name">perception / router</p><p class="module-path">extension/perception/router.js</p></div>
+              <span class="module-badge badge-pe">PERCEPTION</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">ES module that analyses the user task and current PageState to produce a PerceptionPlan - a declarative decision on which perception modules to activate. Avoids expensive OCR/Vision inference when a simple DOM read suffices. <em>Note: service-worker.js contains its own inline copy of this logic with different defaults that takes precedence.</em></p>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>getPerceptionPlan</code> <span class="exp">exported</span></td><td><code>task, pageState</code></td><td><code>{ needsDOM, needsScreenshot, needsOCR, needsVision, cropRegion, reasoning }</code></td><td>Priority routing: (1) click/type/scroll without vision keywords -> DOM only. (2) VISION_KEYWORDS -> screenshot+vision. (3) OCR_KEYWORDS with images -> screenshot+OCR. (4) Default -> DOM only.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- SCREENSHOT -->
+          <div class="module-card reveal" id="screenshot">
+            <div class="module-header">
+              <div><p class="module-name">perception / screenshot</p><p class="module-path">extension/perception/screenshot.js</p></div>
+              <span class="module-badge badge-pe">PERCEPTION</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">ES module providing screenshot capture and crop utilities for the background service worker. Capture uses the Chrome tabs API. Cropping is delegated to the offscreen document because the service worker has no Canvas access.</p>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>captureScreenshot</code> <span class="exp">exported</span></td><td>-</td><td><code>Promise&lt;string&gt;</code> PNG data URL</td><td>Calls chrome.tabs.captureVisibleTab(null, { format: 'png', quality: 90 }). Must be called from background service worker context.</td></tr>
+                  <tr><td><code>cropToRegion</code> <span class="exp">exported</span></td><td><code>dataUrl, bbox</code></td><td><code>Promise&lt;string&gt;</code> cropped PNG</td><td>Sends OFFSCREEN_CROP to the offscreen document. Falls back to uncropped screenshot on error.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- OCR -->
+          <div class="module-card reveal" id="ocr">
+            <div class="module-header">
+              <div><p class="module-name">perception / ocr</p><p class="module-path">extension/perception/ocr.js</p></div>
+              <span class="module-badge badge-pe">PERCEPTION</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">ES module - thin messaging proxy to the Tesseract.js OCR engine running in the offscreen document. Actual inference runs in offscreen.src.js. Never throws - always gracefully degrades.</p>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>runOCR</code> <span class="exp">exported</span></td><td><code>imageDataUrl: string</code></td><td><code>Promise&lt;{ text: string, regions: OCRWordRegion[] }&gt;</code></td><td>Sends OFFSCREEN_OCR message. Returns { text: '', regions: [] } on failure. Never throws.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- VISION -->
+          <div class="module-card reveal" id="vision">
+            <div class="module-header">
+              <div><p class="module-name">perception / vision</p><p class="module-path">extension/perception/vision.js</p></div>
+              <span class="module-badge badge-pe">PERCEPTION</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">ES module - messaging proxy to the YOLOS-tiny object detection model in the offscreen document. Used for chart/graph/UI spatial understanding. Never throws - gracefully degrades.</p>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>runVision</code> <span class="exp">exported</span></td><td><code>imageDataUrl: string, query: string</code></td><td><code>Promise&lt;{ description: string, objects: DetectedObject[] }&gt;</code></td><td>Sends OFFSCREEN_VISION message. Returns { description: '', objects: [] } on failure.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- PII DETECTOR -->
+          <div class="module-card reveal" id="pii-detector">
+            <div class="module-header">
+              <div><p class="module-name">privacy / pii-detector</p><p class="module-path">extension/privacy/pii-detector.js</p></div>
+              <span class="module-badge badge-pr">PRIVACY</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">ES module for purely local, in-browser PII detection in text strings and DOM element descriptors. All processing is regex-based - zero network calls. Detects global and India-specific PII types.</p>
+              <div class="subsection">
+                <div class="subsection-title">CONSTANTS</div>
+                <table class="tbl-const"><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>PATTERNS</code></td><td>Named regex patterns: EMAIL, PHONE, CREDIT_CARD, SSN, AADHAAR (12-digit Indian national ID), PAN (Indian tax ID), IP_ADDRESS.</td></tr>
+                  <tr><td><code>SENSITIVE_FIELD_TYPES</code></td><td><code>['password', 'email', 'tel', 'cc-number', 'cc-exp', 'cc-csc', 'credit-card']</code></td></tr>
+                  <tr><td><code>SENSITIVE_NAMES</code></td><td><code>/passw|secret|token|api.?key|ssn|aadhaar|pan.?card|cvv|cvc/i</code> - matched against element name + placeholder + ariaLabel.</td></tr>
+                </tbody></table>
+              </div>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>detectTextPII</code> <span class="exp">exported</span></td><td><code>text: string</code></td><td><code>Array&lt;{ type, match, index }&gt;</code></td><td>Scans text against all PATTERNS. Returns all hits with PII type, matched string, and character index.</td></tr>
+                  <tr><td><code>isSensitiveField</code> <span class="exp">exported</span></td><td><code>element: ElementDescriptor</code></td><td><code>boolean</code></td><td>Returns true if element.inputType is in SENSITIVE_FIELD_TYPES, or name/placeholder/ariaLabel matches SENSITIVE_NAMES.</td></tr>
+                  <tr><td><code>scanPageState</code> <span class="exp">exported</span></td><td><code>pageState: PageState</code></td><td><code>{ processed: true, redactedCount, regions: PrivacyRegion[] }</code></td><td>Iterates all elements (field sensitivity + text PII) and all text blocks. Accumulates a flat regions array and total count.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- REDACTOR -->
+          <div class="module-card reveal" id="redactor">
+            <div class="module-header">
+              <div><p class="module-name">privacy / redactor</p><p class="module-path">extension/privacy/redactor.js</p></div>
+              <span class="module-badge badge-pr">PRIVACY</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">ES module that produces a sanitised deep-clone of a PageState by replacing detected PII with labelled placeholders. Also provides Canvas-based image region redaction. <em>Note: redactImageRegions requires OffscreenCanvas - must run in the offscreen document context.</em></p>
+              <div class="subsection">
+                <div class="subsection-title">CONSTANTS</div>
+                <table class="tbl-const"><thead><tr><th>Name</th><th>Values</th></tr></thead><tbody>
+                  <tr><td><code>REDACT_LABELS</code></td><td><code>{ EMAIL: '[REDACTED_EMAIL]', PHONE: '[REDACTED_PHONE]', CREDIT_CARD: '[REDACTED_CC]', SSN: '[REDACTED_SSN]', AADHAAR: '[REDACTED_AADHAAR]', PAN: '[REDACTED_PAN]', IP_ADDRESS: '[REDACTED_IP]', SENSITIVE_FIELD: '[REDACTED]' }</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>redactPageState</code> <span class="exp">exported</span></td><td><code>pageState: PageState</code></td><td><code>{ sanitizedState, privacyMeta }</code></td><td>Deep-clones via JSON round-trip, runs scanPageState(), applies redactString() to all element text/value/placeholder fields. Sensitive fields get '[REDACTED]'.</td></tr>
+                  <tr><td><code>redactString</code> <span class="prv">private</span></td><td><code>str: string</code></td><td><code>string</code></td><td>Calls detectTextPII, sorts hits descending by index, replaces each match in-place to avoid position shifts.</td></tr>
+                  <tr><td><code>redactImageRegions</code> <span class="exp">exported</span></td><td><code>dataUrl: string, regions: PrivacyRegion[]</code></td><td><code>Promise&lt;string&gt;</code></td><td>Draws image onto OffscreenCanvas, fills each region bbox with black, draws a red type label. Requires offscreen document context.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- FACE DETECTOR -->
+          <div class="module-card reveal" id="face-detector">
+            <div class="module-header">
+              <div><p class="module-name">privacy / face-detector</p><p class="module-path">extension/privacy/face-detector.js</p></div>
+              <span class="module-badge badge-pr">PRIVACY</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">ES module stub providing a messaging proxy to face/person detection (YOLOS-tiny via Transformers.js) in the offscreen document. Converts detection results into the standard PrivacyRegion format consumed by redactor.js.</p>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>detectFaces</code> <span class="exp">exported</span></td><td><code>imageDataUrl: string</code></td><td><code>Promise&lt;Array&lt;{ bbox, confidence }&gt;&gt;</code></td><td>Sends OFFSCREEN_FACE_DETECT. Returns [] on failure. Never throws.</td></tr>
+                  <tr><td><code>facesToPrivacyRegions</code> <span class="exp">exported</span></td><td><code>faces: Array&lt;{ bbox, confidence }&gt;</code></td><td><code>PrivacyRegion[]</code></td><td>Converts raw face detection output into { type: 'FACE', bbox, confidence } schema for redactImageRegions().</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+          <!-- OFFSCREEN -->
+          <div class="module-card reveal" id="offscreen">
+            <div class="module-header">
+              <div><p class="module-name">offscreen / offscreen.src</p><p class="module-path">extension/offscreen/offscreen.src.js</p></div>
+              <span class="module-badge badge-of">OFFSCREEN - ML ENGINE</span>
+            </div>
+            <div class="module-body">
+              <p class="module-purpose">Bundled (webpack) ES module running all local ML inference inside the Chrome offscreen document. Hosts: (1) YOLOS-tiny object detection via @huggingface/transformers for face/person privacy and vision queries; (2) Tesseract.js for OCR; (3) Canvas API for image cropping and visual redaction. Both ML models are lazily loaded and cached via the Transformers.js browser cache.</p>
+              <div class="subsection">
+                <div class="subsection-title">CONSTANTS</div>
+                <table class="tbl-const"><thead><tr><th>Name</th><th>Value</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>env.allowLocalModels</code></td><td><code>false</code></td><td>Forces model downloads from HuggingFace Hub.</td></tr>
+                  <tr><td><code>env.useBrowserCache</code></td><td><code>true</code></td><td>Caches downloaded models in browser storage.</td></tr>
+                  <tr><td><code>STATUS</code></td><td><code>{ objectDetection, ocr }</code></td><td>Lifecycle state for both models: 'idle' | 'loading' | 'ready' | 'error'.</td></tr>
+                  <tr><td><code>PII_PATTERNS</code></td><td><code>Array&lt;{ type, regex }&gt;</code></td><td>Internal PII regex set for OCR scanning: EMAIL, PHONE, CREDIT_CARD, AADHAAR, PAN, SSN.</td></tr>
+                </tbody></table>
+              </div>
+              <div class="subsection">
+                <div class="subsection-title">MESSAGE HANDLERS</div>
+                <table class="tbl-msg"><thead><tr><th>Message Type</th><th>Params</th><th>Responds With</th></tr></thead><tbody>
+                  <tr><td><code>OFFSCREEN_OCR</code></td><td><code>{ image }</code></td><td><code>{ success, text, regions: [{ text, bbox, confidence }] }</code></td></tr>
+                  <tr><td><code>OFFSCREEN_FACE_DETECT</code></td><td><code>{ image }</code></td><td><code>{ success, faces: [{ bbox, confidence, label }] }</code></td></tr>
+                  <tr><td><code>OFFSCREEN_VISION</code></td><td><code>{ image, query }</code></td><td><code>{ success, description, objects: [{ label, confidence, bbox }] }</code></td></tr>
+                  <tr><td><code>OFFSCREEN_CROP</code></td><td><code>{ image, bbox: [x,y,w,h] }</code></td><td><code>{ success, croppedImage }</code></td></tr>
+                  <tr><td><code>OFFSCREEN_FULL_PRIVACY</code></td><td><code>{ image, allowFaces: boolean }</code></td><td><code>{ success, sanitizedImage, ocrText, privacyRegions, redactedCount }</code></td></tr>
+                  <tr><td><code>OFFSCREEN_GET_STATUS</code></td><td>-</td><td><code>{ success: true, status: STATUS }</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="subsection">
+                <div class="subsection-title">FUNCTIONS</div>
+                <table class="tbl-fn"><thead><tr><th>Function</th><th>Params</th><th>Returns</th><th>Description</th></tr></thead><tbody>
+                  <tr><td><code>getObjectDetector</code> <span class="prv">private</span></td><td>-</td><td><code>Promise&lt;Pipeline&gt;</code></td><td>Lazily loads Xenova/yolos-tiny (object-detection, fp32). Singleton - returns cached instance. Broadcasts MODEL_STATUS events during loading.</td></tr>
+                  <tr><td><code>getOCRWorker</code> <span class="prv">private</span></td><td>-</td><td><code>Promise&lt;TesseractWorker|null&gt;</code></td><td>Lazily imports tesseract.js, creates an English-language worker. Returns null on import failure.</td></tr>
+                  <tr><td><code>handleFullPrivacyPipeline</code> <span class="prv">private</span></td><td><code>imageDataUrl, allowFaces</code></td><td><code>Promise&lt;{ success, sanitizedImage, ocrText, privacyRegions, redactedCount }&gt;</code></td><td><strong>Three-stage pipeline:</strong> (1) Person detection - skipped if allowFaces=true; (2) OCR scanning words and full lines for PII; (3) Canvas redaction. Person regions are pixelated; text PII is blacked out. Also exposed as window.handleFullPrivacyPipeline for Firefox.</td></tr>
+                  <tr><td><code>pixelateRegion</code> <span class="prv">private</span></td><td><code>ctx, x, y, w, h, blockSize=12</code></td><td><code>void</code></td><td>Replaces each 12x12 tile with the colour of its top-left pixel (mosaic), writes back, overlays red fill + [PERSON] label.</td></tr>
+                  <tr><td><code>detectPIIInText</code> <span class="prv">private</span></td><td><code>text: string</code></td><td><code>string|null</code></td><td>Tests text against PII_PATTERNS. Returns first matching type name, or null if text &lt; 4 chars or no match.</td></tr>
+                  <tr><td><code>handleCrop</code> <span class="prv">private</span></td><td><code>imageDataUrl, bbox: [x,y,w,h]</code></td><td><code>Promise&lt;{ success, croppedImage }&gt;</code></td><td>Draws image onto canvas sized to [w,h] using drawImage() with source rect offset, returns cropped PNG.</td></tr>
+                  <tr><td><code>broadcast</code> <span class="prv">private</span></td><td><code>type, data</code></td><td><code>void</code></td><td>Sends runtime message merging { type } with data. Silently swallows errors when no listener is active.</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span>&gt; DOCS INDEXED... &gt; 16 MODULES DOCUMENTED... &gt; OFFSCREEN ML ENGINE ACTIVE... &gt; PRIVACY PIPELINE READY... &gt; ACTION TYPES: CLICK TYPE SCROLL HOVER NAVIGATE PRESSKEY TYPEANDSUBMIT SELECT...</span>
+        <span>&gt; DOCS INDEXED... &gt; 16 MODULES DOCUMENTED... &gt; OFFSCREEN ML ENGINE ACTIVE... &gt; PRIVACY PIPELINE READY... &gt; ACTION TYPES: CLICK TYPE SCROLL HOVER NAVIGATE PRESSKEY TYPEANDSUBMIT SELECT...</span>
+      </div>
+      <div class="ticker">
+        <span>&gt; DOCS INDEXED... &gt; 16 MODULES DOCUMENTED... &gt; OFFSCREEN ML ENGINE ACTIVE... &gt; PRIVACY PIPELINE READY... &gt; ACTION TYPES: CLICK TYPE SCROLL HOVER NAVIGATE PRESSKEY TYPEANDSUBMIT SELECT...</span>
+        <span>&gt; DOCS INDEXED... &gt; 16 MODULES DOCUMENTED... &gt; OFFSCREEN ML ENGINE ACTIVE... &gt; PRIVACY PIPELINE READY... &gt; ACTION TYPES: CLICK TYPE SCROLL HOVER NAVIGATE PRESSKEY TYPEANDSUBMIT SELECT...</span>
+      </div>
+    </div>
+    <footer class="footer">
+      <span>VISIONARAI DOCS / MODULE API REFERENCE / 2026</span>
+      <span>SIH 214 / CHITTI ROBOS</span>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
