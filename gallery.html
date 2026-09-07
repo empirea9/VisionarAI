@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/VisionarAI/styles.css" />
 </head>
 <body>
   <div class="site">
@@ -17,11 +17,16 @@
         <h1>Gallery</h1>
       </div>
       <nav class="nav">
-        <a href="/">HOME</a>
-        <a href="/documentation">DOCUMENTATION</a>
-        <a class="active" href="/gallery">GALLERY</a>
-        <a href="/team">TEAM</a>
-        <a href="#" id="theme-toggle" class="theme-toggle" style="text-decoration:none; margin-left:8px; cursor:pointer;" title="Toggle Theme">🌙</a>
+        <a href="/VisionarAI/">HOME</a>
+        <a href="/VisionarAI/documentation">DOCUMENTATION</a>
+        <a class="active" href="/VisionarAI/gallery">GALLERY</a>
+        <a href="/VisionarAI/team">TEAM</a>
+        
+      <a href="#" id="theme-toggle" class="theme-toggle" style="text-decoration:none; margin-left:8px; padding: 4px; display: flex; align-items: center; color: var(--ink);" title="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </a>
       </nav>
     </header>
 
@@ -38,8 +43,8 @@
           <div class="gallery-row reveal panel" style="padding: 32px;  --theme-color: var(--lavender); --theme-dark: var(--lavender-dark);">
             <div class="gallery-visual">
               <div class="visual-number">001</div>
-              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="assets/gallery-1-pii.png">
-                <img src="assets/gallery-1-pii-thumb.png" alt="PII Redaction Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
+              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="/VisionarAI/assets/gallery-1-pii.png">
+                <img src="/VisionarAI/assets/gallery-1-pii-thumb.png" alt="PII Redaction Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
                 <button class="zoom-btn" title="Fullscreen" aria-label="Zoom in">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
                 </button>
@@ -59,8 +64,8 @@
           <div class="gallery-row reveal panel" style="padding: 32px;  --theme-color: var(--mint); --theme-dark: var(--mint-dark);">
             <div class="gallery-visual">
               <div class="visual-number">002</div>
-              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="assets/gallery-2-vision.png">
-                <img src="assets/gallery-2-vision-thumb.png" alt="Spatial Vision Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
+              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="/VisionarAI/assets/gallery-2-vision.png">
+                <img src="/VisionarAI/assets/gallery-2-vision-thumb.png" alt="Spatial Vision Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
                 <button class="zoom-btn" title="Fullscreen" aria-label="Zoom in">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
                 </button>
@@ -80,8 +85,8 @@
           <div class="gallery-row reveal panel" style="padding: 32px;  --theme-color: var(--coral); --theme-dark: var(--coral-dark);">
             <div class="gallery-visual">
               <div class="visual-number">003</div>
-              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="assets/gallery-3-ocr.png">
-                <img src="assets/gallery-3-ocr-thumb.png" alt="Visual Data Extraction Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
+              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="/VisionarAI/assets/gallery-3-ocr.png">
+                <img src="/VisionarAI/assets/gallery-3-ocr-thumb.png" alt="Visual Data Extraction Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
                 <button class="zoom-btn" title="Fullscreen" aria-label="Zoom in">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
                 </button>
@@ -101,8 +106,8 @@
           <div class="gallery-row reveal panel" style="padding: 32px;  --theme-color: #bfdbfe; --theme-dark: #60a5fa;">
             <div class="gallery-visual">
               <div class="visual-number">004</div>
-              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="assets/gallery-4-privacy.png">
-                <img src="assets/gallery-4-privacy-thumb.png" alt="Dynamic Masking Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
+              <div class="visual-box gallery-zoom-container" style="--shadow-color: var(--theme-color); --shadow-hover: var(--theme-dark);" data-full="/VisionarAI/assets/gallery-4-privacy.png">
+                <img src="/VisionarAI/assets/gallery-4-privacy-thumb.png" alt="Dynamic Masking Screenshot" class="gallery-img" style="aspect-ratio: 3/4; object-fit: contain; object-position: top center; background: var(--paper);">
                 <button class="zoom-btn" title="Fullscreen" aria-label="Zoom in">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
                 </button>
@@ -139,7 +144,7 @@
       <span>SIH 214 / CHITTI ROBOS</span>
     </footer>
   </div>
-  <script src="script.js"></script>
+  <script src="/VisionarAI/script.js"></script>
     <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox">
       <span class="lightbox-close">&times;</span>
@@ -173,6 +178,11 @@
     </script>
 </body>
 </html>
+
+
+
+
+
 
 
 

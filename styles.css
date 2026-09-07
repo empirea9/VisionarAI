@@ -1671,3 +1671,132 @@ body.dark-theme .problem-statement-card {
 }
 
 
+
+
+
+
+/* === TOTAL MOBILE REVAMP === */
+@media (max-width: 768px) {
+  body { overflow-x: hidden; }
+  
+  main {
+    width: 92vw !important;
+    padding-right: 12px !important; 
+    padding-bottom: 24px !important;
+  }
+
+  /* --- TOPBAR & NAV FIX (Clean Horizontal Scroll) --- */
+  .topbar { position: relative !important; }
+  .topbar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    padding: 16px !important;
+  }
+  .nav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    padding-bottom: 8px !important; /* Space for scrollbar/shadows */
+    gap: 12px !important;
+  }
+  /* Hide scrollbar for nav for a sleek look */
+  .nav::-webkit-scrollbar { display: none !important; }
+  .nav { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+  .nav a {
+    flex: 0 0 auto !important;
+  }
+  /* Rip toggle out of Nav and put it right of H1 */
+  #theme-toggle {
+    position: absolute !important;
+    top: 30px !important;
+    right: 16px !important;
+    padding: 8px !important; /* Larger touch target */
+  }
+
+  /* --- PIPELINE / FLOW-STEP FIX --- */
+  /* Prevent the cards from squishing and crushing the text! */
+  .flow-steps {
+    padding-bottom: 24px !important; /* Space for the shadow and scrollbar */
+  }
+  .flow-step {
+    flex: 0 0 240px !important; /* Do not shrink! */
+    min-height: auto !important;
+  }
+
+  /* --- HERO TYPOGRAPHY & BUTTONS --- */
+  .hero h2 {
+    font-size: clamp(32px, 9vw, 42px) !important;
+    line-height: 1.1 !important;
+    margin-bottom: 24px !important;
+  }
+  .hero > div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+  .hero .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 16px !important;
+  }
+
+  /* --- CAPABILITY STRIP --- */
+  .capability-strip {
+    grid-template-columns: 1fr !important;
+    border-right: none !important;
+  }
+  .capability-strip article {
+    border-bottom: 2px solid var(--ink) !important;
+    border-right: none !important;
+  }
+  .capability-strip article:last-child {
+    border-bottom: none !important;
+  }
+
+  
+  /* --- GALLERY TECH TAGS FIX --- */
+  .tech-tags {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
+    padding-bottom: 8px !important;
+    -ms-overflow-style: none !important; 
+    scrollbar-width: none !important;
+    justify-content: flex-start !important;
+  }
+  .tech-tags::-webkit-scrollbar { display: none !important; }
+  .tech-tag {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+    flex: 0 0 auto !important;
+  }
+
+  /* --- GRIDS & BANNERS --- */
+  .gallery-visual { flex: 1 1 100% !important; width: 100% !important; }
+  .gallery-row { padding: 24px 16px !important; }
+  .team-grid, .gallery-grid, .docs-grid, .docs-layout, .docs-content {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .repo-banner-text, .repo-banner-terminal { 
+    padding: 24px !important; 
+  }
+  .repo-banner-text h2 { 
+    font-size: clamp(28px, 8vw, 36px) !important; 
+  }
+  .gallery-stack { 
+    gap: 40px !important; 
+  }
+}
+
+
+
+
+
+

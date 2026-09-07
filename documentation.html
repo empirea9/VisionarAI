@@ -7,23 +7,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/VisionarAI/styles.css" />
   <style>
-    .docs-layout { display: grid; grid-template-columns: 240px 1fr; gap: 24px; align-items: start; }
+    .docs-layout { min-width: 0; display: grid; grid-template-columns: 240px 1fr; gap: 24px; align-items: start; }
     .docs-sidebar { position: sticky; top: 100px; border: 2px solid var(--ink); border-radius: 4px; background: #fff; box-shadow: 4px 4px 0 var(--ink); max-height: calc(100vh - 140px); overflow-y: auto; overflow-x: hidden; }
     .sidebar-heading { background: var(--ink); color: #fff; font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; padding: 10px 14px; }
     .sidebar-group { border-bottom: 1px solid #e5e7eb; padding: 8px 0; }
     .sidebar-group-label { font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: #888; padding: 6px 14px 2px; }
     .sidebar-link { display: block; padding: 6px 14px; font-size: 13px; font-weight: 600; color: #333; border-left: 3px solid transparent; transition: background 80ms, border-color 80ms; }
     .sidebar-link:hover { background: var(--lavender); border-left-color: var(--ink); }
-    .docs-content { display: grid; gap: 32px; }
-    .module-card { border: 2px solid var(--ink); background: #fff; box-shadow: 4px 4px 0 var(--ink); border-radius: 4px; overflow: hidden; }
+    .docs-content { min-width: 0; display: grid; gap: 32px; }
+    .module-card { min-width: 0; border: 2px solid var(--ink); background: #fff; box-shadow: 4px 4px 0 var(--ink); border-radius: 4px; overflow: hidden; }
     .module-header { background: var(--ink); color: #fff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
     .module-name { font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; margin: 0; }
-    .module-path { font-family: "JetBrains Mono", monospace; font-size: 12px; color: #a7f3d0; margin-top: 4px; }
+    .module-path { font-family: "JetBrains Mono", monospace; font-size: 12px; color: #a7f3d0; margin-top: 4px; word-break: break-word; overflow-wrap: anywhere; }
     .module-badge { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.4); border-radius: 2px; white-space: nowrap; }
     .badge-bg { background: rgba(167,243,208,0.2); } .badge-ag { background: rgba(233,213,255,0.2); } .badge-co { background: rgba(254,202,202,0.2); } .badge-pe { background: rgba(167,243,208,0.15); } .badge-pr { background: rgba(254,202,202,0.2); } .badge-of { background: rgba(233,213,255,0.2); }
-    .module-body { padding: 20px; overflow-x: auto; }
+    .module-body { padding: 16px; overflow-x: auto; width: 100%; box-sizing: border-box; }
     .module-purpose { font-size: 15px; line-height: 1.65; color: #334155; margin: 0 0 24px; padding-bottom: 16px; border-bottom: 2px dashed #e5e7eb; }
     .subsection { margin-bottom: 28px; }
     .subsection-title { font-size: 12px; font-weight: 800; font-family: "JetBrains Mono", monospace; border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 12px; letter-spacing: 0.08em; }
@@ -55,10 +55,15 @@
         <h1>Documentation</h1>
       </div>
       <nav class="nav">
-        <a href="/">HOME</a>
-        <a class="active" href="/documentation">DOCUMENTATION</a>
-        <a href="/gallery">GALLERY</a>
-        <a href="/team">TEAM</a><a href="#" id="theme-toggle" class="theme-toggle" style="text-decoration:none; margin-left:8px; cursor:pointer;" title="Toggle Theme">🌙</a>
+        <a href="/VisionarAI/">HOME</a>
+        <a class="active" href="/VisionarAI/documentation">DOCUMENTATION</a>
+        <a href="/VisionarAI/gallery">GALLERY</a>
+        <a href="/VisionarAI/team">TEAM</a>
+      <a href="#" id="theme-toggle" class="theme-toggle" style="text-decoration:none; margin-left:8px; padding: 4px; display: flex; align-items: center; color: var(--ink);" title="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </a>
       </nav>
     </header>
     <main>
@@ -517,9 +522,15 @@
       <span>SIH 214 / CHITTI ROBOS</span>
     </footer>
   </div>
-  <script src="script.js"></script>
+  <script src="/VisionarAI/script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 

@@ -61,6 +61,38 @@ function setupCapabilityFlow() {
   });
 }
 
+
+function setupMobileAutoScroll() {
+  const flowSteps = document.querySelector('.flow-steps');
+  if (!flowSteps) return;
+
+  if (window.innerWidth > 768) return;
+
+  let scrollDir = 1;
+  let isInteracting = false;
+
+  const pauseAutoScroll = () => {
+    isInteracting = true;
+    if (window.autoScrollTimeout) clearTimeout(window.autoScrollTimeout);
+    window.autoScrollTimeout = setTimeout(() => { isInteracting = false; }, 2500);
+  };
+
+  flowSteps.addEventListener('touchstart', pauseAutoScroll, {passive: true});
+  flowSteps.addEventListener('touchmove', pauseAutoScroll, {passive: true});
+  flowSteps.addEventListener('scroll', pauseAutoScroll, {passive: true});
+
+  setInterval(() => {
+    if (isInteracting) return;
+    
+    flowSteps.scrollLeft += scrollDir;
+    
+    if (flowSteps.scrollLeft + flowSteps.clientWidth >= flowSteps.scrollWidth - 1) {
+      scrollDir = -1;
+    } else if (flowSteps.scrollLeft <= 0) {
+      scrollDir = 1;
+    }
+  }, 25);
+}
 function setupScrollReveal() {
   const elements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -81,6 +113,7 @@ window.addEventListener('DOMContentLoaded', () => {
   setupCapabilityFlow();
   startRedactionDemo();
   setupScrollReveal();
+  setupMobileAutoScroll();
 });
 
 // FAQ smooth open/close
@@ -212,4 +245,5 @@ document.querySelectorAll('.faq-item').forEach(details => {
     }
   });
 })();
+
 
