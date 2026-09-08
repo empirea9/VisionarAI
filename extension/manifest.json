@@ -1,4 +1,4 @@
-﻿{
+{
     "manifest_version":  3,
     "name":  "Private Browser Agent",
     "description":  "A privacy-preserving browser agent. Your data never leaves your device unredacted.",
@@ -21,6 +21,9 @@
                          ],
     "background":  {
                        "service_worker":  "background/service-worker.js",
+                       "scripts":  [
+                                       "background/service-worker.js"
+                                   ],
                        "type":  "module"
                    },
     "action":  {
@@ -50,6 +53,9 @@
                                 },
     "side_panel":  {
                        "default_path":  "popup/popup.html"
+                   },
+    "sidebar_action": {
+                       "default_panel":  "popup/popup.html"
                    }
 }
 
